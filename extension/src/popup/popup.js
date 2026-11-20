@@ -5,6 +5,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   let selectedDelay = 0;
 
+  // Dynamically set version from extension manifest
+  try {
+    const versionLabel = document.getElementById("brand-version-label");
+    if (versionLabel && chrome.runtime && chrome.runtime.getManifest) {
+      const ver = chrome.runtime.getManifest().version;
+      versionLabel.textContent = `v${ver} • Ultra Screen Capture`;
+    }
+  } catch (e) {}
+
   // Delay pills selector
   const delayPills = document.querySelectorAll("#delay-selector .pill-btn");
   delayPills.forEach((btn) => {
