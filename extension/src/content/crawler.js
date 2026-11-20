@@ -9,12 +9,22 @@
 window.OmniCrawler = (function () {
   // Map keyed by Element preserving pre-capture styles for idempotent restore
   const originalStylesMap = new Map();
+  let dynamicStyleTag = null;
+
+  function injectDynamicStyle(css) {
+    if (!dynamicStyleTag) {
+      dynamicStyleTag = document.createElement("style");
+      dynamicStyleTag.id = "ghostshot-injected-styles";
+      (document.head || document.documentElement).appendChild(dynamicStyleTag);
+    }
+    dynamicStyleTag.textContent += "\n" + css;
+  }
 
   function walkDom(root, callback) {
     if (!root) return;
     callback(root);
 
-    // If element contains an open shadow root, traverse it
+    // If element contains an open shadow root, traverse it recursively
     if (root.shadowRoot) {
       const shadowChildren = root.shadowRoot.children || [];
       for (let i = 0; i < shadowChildren.length; i++) {
@@ -79,6 +89,33 @@ window.OmniCrawler = (function () {
       } else if (isSticky(el, style)) {
         stickyElements.push(el);
       }
+
+      // Detect fixed background attachment to prevent repeating parallax seams
+      if (style.backgroundAttachment === "fixed") {
+        if (!originalStylesMap.has(el)) {
+          originalStylesMap.set(el, {
+            type: "fixedBg",
+            backgroundAttachment: el.style.backgroundAttachment || ""
+          });
+        }
+        el.style.setProperty("background-attachment", "scroll", "important");
+      }
+
+      // Check pseudo-elements for fixed backdrop/overlay positioning (GoFullPage parity)
+      try {
+        const rect = el.getBoundingClientRect();
+        if (rect.width > 0.5 * window.innerWidth && rect.height > 0.5 * window.innerHeight) {
+          ["::before", "::after"].forEach((pseudo) => {
+            const pseudoStyle = window.getComputedStyle(el, pseudo);
+            if (pseudoStyle && pseudoStyle.position === "fixed") {
+              if (!el.id) {
+                el.id = `ghostshot-pseudo-${Date.now().toString(36)}-${Math.random().toString(36).substr(2, 5)}`;
+              }
+              injectDynamicStyle(`#${window.CSS.escape(el.id)}${pseudo} { position: absolute !important; }`);
+            }
+          });
+        }
+      } catch (e) {}
     });
 
     return { fixedElements, stickyElements };
@@ -91,7 +128,9 @@ window.OmniCrawler = (function () {
    */
   function normalizeStickyElements(elements) {
     if (!elements || !Array.isArray(elements)) return;
-    elements.forEach((el) => {
+    const rules = [];
+
+    elements.forEach((el, index) => {
       if (!el || !el.style) return;
       if (!originalStylesMap.has(el)) {
         originalStylesMap.set(el, {
@@ -103,7 +142,17 @@ window.OmniCrawler = (function () {
 
       el.style.setProperty("position", "static", "important");
       el.style.setProperty("top", "auto", "important");
+
+      // Inject high-specificity dynamic CSS rule to guarantee override
+      if (!el.id) {
+        el.id = `ghostshot-sticky-${index}-${Date.now().toString(36)}`;
+      }
+      rules.push(`#${window.CSS.escape(el.id)} { position: static !important; top: auto !important; }`);
     });
+
+    if (rules.length > 0) {
+      injectDynamicStyle(rules.join("\n"));
+    }
   }
 
   /**
@@ -162,9 +211,20 @@ window.OmniCrawler = (function () {
         } else {
           el.style.removeProperty("opacity");
         }
+      } else if (orig.type === "fixedBg") {
+        if (orig.backgroundAttachment) {
+          el.style.backgroundAttachment = orig.backgroundAttachment;
+        } else {
+          el.style.removeProperty("background-attachment");
+        }
       }
     }
     originalStylesMap.clear();
+
+    if (dynamicStyleTag) {
+      dynamicStyleTag.remove();
+      dynamicStyleTag = null;
+    }
   }
 
   return {

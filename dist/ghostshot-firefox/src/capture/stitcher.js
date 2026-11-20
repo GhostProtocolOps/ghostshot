@@ -5,7 +5,8 @@
  */
 
 window.OmniStitcher = (function() {
-  const MAX_CANVAS_DIMENSION = 16384; // Safe boundary across Chromium and WebKit
+  const MAX_CANVAS_DIMENSION = 28800; // Ultra high-resolution buffer matching GoFullPage standard
+  const MAX_CANVAS_AREA = 259200000;  // 259.2 Megapixels
 
   async function loadImage(src) {
     return new Promise((resolve, reject) => {
@@ -16,6 +17,35 @@ window.OmniStitcher = (function() {
     });
   }
 
+  /**
+   * Samples edge pixel histogram to heal background padding voids
+   */
+  function healBackgroundSeams(ctx, width, height) {
+    try {
+      const sampleH = Math.min(10, height);
+      const imgData = ctx.getImageData(0, 0, width, sampleH);
+      const d = imgData.data;
+      const counts = new Map();
+      for (let i = 0; i < d.length; i += 4) {
+        if (d[i + 3] === 255) {
+          const rgb = `${d[i]},${d[i + 1]},${d[i + 2]}`;
+          counts.set(rgb, (counts.get(rgb) || 0) + 1);
+        }
+      }
+      let maxCount = 0;
+      let dominantRgb = "255,255,255";
+      for (const [rgb, c] of counts.entries()) {
+        if (c > maxCount) {
+          maxCount = c;
+          dominantRgb = rgb;
+        }
+      }
+      return `rgb(${dominantRgb})`;
+    } catch (e) {
+      return "rgb(255,255,255)";
+    }
+  }
+
   async function stitchSlices(session) {
     const { slices, dimensions, dpr } = session;
     const scale = dpr || 1.0;
@@ -23,9 +53,9 @@ window.OmniStitcher = (function() {
     const totalWidthPx = Math.ceil(dimensions.totalWidth * scale);
     const totalHeightPx = Math.ceil(dimensions.totalHeight * scale);
 
-    // If height exceeds safe canvas limit, partition into tiles
-    const isMultiTiled = totalHeightPx > MAX_CANVAS_DIMENSION;
-    const tileHeightPx = isMultiTiled ? MAX_CANVAS_DIMENSION : totalHeightPx;
+    // If height or area exceeds safe canvas limit, partition into virtual tiles
+    const isMultiTiled = totalHeightPx > MAX_CANVAS_DIMENSION || (totalWidthPx * totalHeightPx) > MAX_CANVAS_AREA;
+    const tileHeightPx = isMultiTiled ? Math.min(MAX_CANVAS_DIMENSION, Math.floor(MAX_CANVAS_AREA / totalWidthPx)) : totalHeightPx;
     const numTiles = Math.ceil(totalHeightPx / tileHeightPx);
 
     const canvasTiles = [];
@@ -36,7 +66,6 @@ window.OmniStitcher = (function() {
         const img = await loadImage(slice.dataUrl);
         return {
           img,
-          // Support both legacy slice format and precision sub-rectangle format
           sourceX: Math.round((slice.sourceX !== undefined ? slice.sourceX : 0) * scale),
           sourceY: Math.round((slice.sourceY !== undefined ? slice.sourceY : 0) * scale),
           sourceWidth: Math.round((slice.sourceWidth !== undefined ? slice.sourceWidth : slice.width) * scale),
@@ -72,6 +101,20 @@ window.OmniStitcher = (function() {
           // Calculate destination offset inside this specific tile
           const dyInTile = item.destY - tileTop;
 
+          // Path2D integer boundary clamping to eliminate sub-pixel seam tears
+          const clipPath = new Path2D();
+          const sX = Math.floor(item.destX);
+          const sY = Math.floor(dyInTile);
+          let sW = Math.ceil(item.destWidth);
+          let sH = Math.ceil(item.destHeight);
+          if (sX + sW < item.destX + item.destWidth) sW += 1;
+          if (sY + sH < dyInTile + item.destHeight) sH += 1;
+
+          clipPath.rect(sX, sY, sW, sH);
+
+          ctx.save();
+          ctx.clip(clipPath);
+
           // Draw image with sub-rectangle source and destination coordinates
           ctx.drawImage(
             item.img,
@@ -84,6 +127,8 @@ window.OmniStitcher = (function() {
             item.destWidth,
             item.destHeight
           );
+
+          ctx.restore();
         }
       }
 
@@ -107,6 +152,8 @@ window.OmniStitcher = (function() {
 
   return {
     stitchSlices,
-    MAX_CANVAS_DIMENSION
+    healBackgroundSeams,
+    MAX_CANVAS_DIMENSION,
+    MAX_CANVAS_AREA
   };
 })();
