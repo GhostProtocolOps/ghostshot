@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "GhostShot - Full Page Screen Capture & Studio",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Full-page screen capture, scroll container snapshots, and pro annotation studio. 100% private, no tracking.",
   "action": {
     "default_icon": {
@@ -20,9 +20,6 @@
     "scripting",
     "storage",
     "unlimitedStorage"
-  ],
-  "optional_permissions": [
-    "downloads"
   ],
   "commands": {
     "_execute_action": {

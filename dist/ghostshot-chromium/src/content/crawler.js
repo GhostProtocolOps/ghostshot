@@ -4,7 +4,7 @@
  * and cleanly suppresses them during scroll slices to guarantee 100% GoFullPage visual parity.
  */
 
-window.OmniCrawler = (function() {
+window.OmniCrawler = (function () {
   const modifiedElements = [];
 
   function walkDom(root, callback) {
