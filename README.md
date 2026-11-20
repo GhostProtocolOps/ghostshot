@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="store/promo_marquee_1400x560.png" alt="GhostShot Banner" width="100%" />
+  <img src="design/ghostshot_github_cover.png" alt="GhostShot Banner" width="100%" style="max-width: 960px; border-radius: 12px;" />
 </p>
 
 # GhostShot — Next-Generation Full Page Screen Capture & Studio
