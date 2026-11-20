@@ -1,6 +1,7 @@
 /**
  * GhostShot - Canvas Stitcher Engine
  * Assembles slice images onto HTML5 2D Canvas with retina DPR scaling and memory tile chunking.
+ * Implements precise sub-rectangle source and destination cropping to eliminate duplicate seams.
  */
 
 window.OmniStitcher = (function() {
@@ -31,12 +32,21 @@ window.OmniStitcher = (function() {
 
     // Preload all slice images
     const loadedImages = await Promise.all(
-      slices.map(async (slice) => ({
-        img: await loadImage(slice.dataUrl),
-        y: slice.y * scale,
-        height: slice.height * scale,
-        width: slice.width * scale
-      }))
+      slices.map(async (slice) => {
+        const img = await loadImage(slice.dataUrl);
+        return {
+          img,
+          // Support both legacy slice format and precision sub-rectangle format
+          sourceX: Math.round((slice.sourceX !== undefined ? slice.sourceX : 0) * scale),
+          sourceY: Math.round((slice.sourceY !== undefined ? slice.sourceY : 0) * scale),
+          sourceWidth: Math.round((slice.sourceWidth !== undefined ? slice.sourceWidth : slice.width) * scale),
+          sourceHeight: Math.round((slice.sourceHeight !== undefined ? slice.sourceHeight : slice.height) * scale),
+          destX: Math.round((slice.destX !== undefined ? slice.destX : 0) * scale),
+          destY: Math.round((slice.destY !== undefined ? slice.destY : slice.y) * scale),
+          destWidth: Math.round((slice.destWidth !== undefined ? slice.destWidth : slice.width) * scale),
+          destHeight: Math.round((slice.destHeight !== undefined ? slice.destHeight : slice.height) * scale)
+        };
+      })
     );
 
     for (let t = 0; t < numTiles; t++) {
@@ -52,15 +62,28 @@ window.OmniStitcher = (function() {
 
       // Draw slices intersecting with this tile
       for (const item of loadedImages) {
-        const sliceTop = item.y;
-        const sliceBottom = item.y + item.height;
+        const sliceTop = item.destY;
+        const sliceBottom = item.destY + item.destHeight;
         const tileTop = currentTileY;
         const tileBottom = currentTileY + currentTileH;
 
         // Check if slice overlaps with current tile
         if (sliceBottom > tileTop && sliceTop < tileBottom) {
-          const dy = sliceTop - tileTop;
-          ctx.drawImage(item.img, 0, dy);
+          // Calculate destination offset inside this specific tile
+          const dyInTile = item.destY - tileTop;
+
+          // Draw image with sub-rectangle source and destination coordinates
+          ctx.drawImage(
+            item.img,
+            item.sourceX,
+            item.sourceY,
+            item.sourceWidth,
+            item.sourceHeight,
+            item.destX,
+            dyInTile,
+            item.destWidth,
+            item.destHeight
+          );
         }
       }
 

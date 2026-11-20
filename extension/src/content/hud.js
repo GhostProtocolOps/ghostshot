@@ -1,6 +1,8 @@
 /**
- * GhostShot - Floating Capture HUD
+ * GhostShot - Floating Capture HUD & Full-Page Orchestrator
  * In-page animated circular progress ring and live slice counter with Esc/Cancel support.
+ * Coordinates DOM crawling, scroll sweeps, fixed/sticky element management,
+ * and mathematical terminal slice clamping for seamless GoFullPage parity.
  */
 
 window.OmniHUD = (function() {
@@ -55,7 +57,7 @@ window.OmniHUD = (function() {
 
   function updateProgress(currentSlice, totalSlices) {
     if (!hudContainer) return;
-    const fraction = Math.min(1.0, currentSlice / totalSlices);
+    const fraction = Math.min(1.0, currentSlice / Math.max(1, totalSlices));
     const dashOffset = CIRCUMFERENCE * (1 - fraction);
     if (progressCircle) {
       progressCircle.style.strokeDashoffset = dashOffset;
@@ -116,65 +118,97 @@ async function executeFullPageCapture(options) {
   scrollEngine.disableSmoothScrolling(container.element);
   scrollEngine.hideScrollbars();
 
-  // Page Warmup
+  // Page Warmup (sweep page to trigger lazy loaded images and responsive DOM)
   await scrollEngine.warmupPage(container);
 
-  // Discover fixed headers
-  const { fixedHeaders } = crawler.findFixedAndStickyElements();
+  // Discover fixed and sticky elements across DOM & open Shadow DOM
+  const { fixedElements, stickyElements } = crawler.findFixedAndStickyElements();
 
+  // Normalize sticky elements immediately to static flow so they render in-place
+  // without adhering to viewport during subsequent scroll slices
+  crawler.normalizeStickyElements(stickyElements);
+
+  // Re-read dimensions after warmup
   const windowHeight = container.clientHeight;
   const windowWidth = container.clientWidth;
   const totalHeight = container.scrollHeight;
   const totalWidth = container.scrollWidth;
   const dpr = window.devicePixelRatio || 1;
 
-  // Plan slices
-  const slices = [];
-  let currY = 0;
-  let sliceIndex = 0;
-  const totalSlices = Math.ceil(totalHeight / windowHeight);
+  const maxScrollY = Math.max(0, totalHeight - windowHeight);
+  const totalSlices = Math.max(1, Math.ceil(totalHeight / windowHeight));
 
-  while (currY < totalHeight && !isAborted) {
+  const slices = [];
+  let capturedY = 0;
+  let sliceIndex = 0;
+
+  while (capturedY < totalHeight && !isAborted) {
     hud.updateProgress(sliceIndex + 1, totalSlices);
 
-    // Scroll to position
-    await scrollEngine.scrollToCoordinate(container, 0, currY);
+    // Calculate exact target scroll coordinate, clamped to document bounds
+    const targetScrollY = Math.min(capturedY, maxScrollY);
+    await scrollEngine.scrollToCoordinate(container, 0, targetScrollY);
 
-    // Apply delay if configured
+    // Allow browser painting and dynamic layout settling
     if (options && options.delay > 0) {
       await new Promise((r) => setTimeout(r, options.delay * 1000));
     } else {
       await new Promise((r) => setTimeout(r, 60));
     }
 
-    // After step 0, hide fixed headers to avoid repeating headers in subsequent slices
-    if (sliceIndex > 0 && fixedHeaders.length > 0) {
-      crawler.hideFixedElements(fixedHeaders);
+    // After slice 0, hide all fixed elements (headers, sidebars, subnavs)
+    // to prevent duplicate repeating bars across the document
+    if (sliceIndex > 0 && fixedElements.length > 0) {
+      crawler.hideFixedElements(fixedElements);
+      // Brief tick for style recalibration
+      await new Promise((r) => setTimeout(r, 20));
     }
 
-    // Call service worker to capture the visible tab
+    // Capture visible tab slice via background service worker
     const response = await new Promise((resolve) => {
       chrome.runtime.sendMessage({ action: "CAPTURE_VISIBLE_SLICE" }, resolve);
     });
 
     if (response && response.success && response.dataUrl) {
+      const actualScrollY = container.type === "window" ? window.scrollY : container.element.scrollTop;
+
+      // Portion from actualScrollY to capturedY was already captured in earlier slices
+      const sourceY = Math.max(0, capturedY - actualScrollY);
+      const sliceHeight = Math.max(1, Math.min(totalHeight, actualScrollY + windowHeight) - capturedY);
+
       slices.push({
         index: sliceIndex,
-        y: currY,
-        height: Math.min(windowHeight, totalHeight - currY),
-        width: windowWidth,
-        dataUrl: response.dataUrl
+        dataUrl: response.dataUrl,
+        sourceX: 0,
+        sourceY: sourceY,
+        sourceWidth: windowWidth,
+        sourceHeight: sliceHeight,
+        destX: 0,
+        destY: capturedY,
+        destWidth: windowWidth,
+        destHeight: sliceHeight,
+        y: capturedY,
+        height: sliceHeight,
+        width: windowWidth
       });
+
+      capturedY += sliceHeight;
+    } else {
+      console.warn("GhostShot: capture slice returned empty response", response);
+      capturedY += windowHeight;
     }
 
-    currY += windowHeight;
     sliceIndex++;
+
+    if (targetScrollY >= maxScrollY && capturedY >= totalHeight) {
+      break;
+    }
   }
 
   // Harvest hyperlinks for PDF export
   const links = scrollEngine.harvestLinks();
 
-  // Cleanup
+  // Cleanup & restore DOM
   hud.destroyHUD();
   crawler.restoreElements();
   scrollEngine.restoreScroll(container);

@@ -7,3 +7,5 @@ node_modules/
 chrome_*.png
 target/
 **/target/
+graphify-out/cache/
+graphify-out/.*
