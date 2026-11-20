@@ -1,0 +1,265 @@
+/* GhostShot Popup Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  width: 360px;
+  background: #0F172A;
+  color: #F8FAFC;
+  padding: 16px;
+  user-select: none;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4F46E5, #06B6D4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.brand-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.brand-sub {
+  font-size: 10px;
+  color: #94A3B8;
+  display: block;
+}
+
+.icon-btn {
+  background: #1E293B;
+  border: 1px solid #334155;
+  color: #94A3B8;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.icon-btn:hover {
+  background: #334155;
+  color: #F8FAFC;
+}
+
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #64748B;
+}
+
+.modes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mode-card {
+  display: flex;
+  align-items: center;
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  width: 100%;
+}
+
+.mode-card:hover {
+  background: #253349;
+  border-color: #475569;
+  transform: translateY(-1px);
+}
+
+.mode-card.primary {
+  border-color: #4F46E5;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.card-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.25), rgba(6, 182, 212, 0.25));
+  color: #06B6D4;
+}
+
+.purple {
+  background: rgba(168, 85, 247, 0.15);
+  color: #A855F7;
+}
+
+.blue {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+}
+
+.card-text {
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #F8FAFC;
+}
+
+.card-desc {
+  font-size: 10px;
+  color: #94A3B8;
+  margin-top: 2px;
+}
+
+.hotkey-badge {
+  font-size: 10px;
+  font-weight: 600;
+  background: #334155;
+  color: #F8FAFC;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.preferences-box {
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pref-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pref-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #F8FAFC;
+}
+
+.pref-sub {
+  font-size: 10px;
+  color: #94A3B8;
+}
+
+.delay-pills {
+  display: flex;
+  gap: 4px;
+}
+
+.pill-btn {
+  background: #0F172A;
+  border: 1px solid #334155;
+  color: #94A3B8;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pill-btn.active {
+  background: linear-gradient(135deg, #4F46E5, #06B6D4);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #334155;
+  transition: .2s;
+  border-radius: 18px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .2s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #10B981;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+.popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #10B981;
+  padding-top: 4px;
+}

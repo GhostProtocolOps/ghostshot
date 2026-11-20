@@ -1,6 +1,6 @@
 /**
- * OmniSnap - Production Multi-Page & Continuous Long Screenshot PDF Engine
- * Reverse-engineered & upgraded from GoFullPage:
+ * GhostShot - Production Multi-Page & Continuous Long Screenshot PDF Engine
+ * Features:
  * - Supports "1 Continuous Long Page" (Single seamless page matching full screenshot height - No split!)
  * - Supports standard multi-page formats (A4, US Letter, Legal) with smart whitespace splitting
  * - Supports multi-tile canvas assemblies (>16,384px height) without browser memory crash

@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Options Page Controller
+ * GhostShot - Options Page Controller
  * Persists user preferences to chrome.storage.local
  */
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     stickySuppress: true,
     shadowDomEnabled: true,
     fit_copies: true,
-    filename_template: "omnisnap-{title}-{date:yyyy-MM-dd-HH_mm_ss}",
+    filename_template: "ghostshot-{title}-{date:yyyy-MM-dd-HH_mm_ss}",
     save_as: false
   };
 

@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Recursive Shadow DOM & Sticky Element Crawler
+ * GhostShot - Recursive Shadow DOM & Sticky Element Crawler
  * Traverses both light DOM and open Shadow DOM trees to discover fixed/sticky elements
  * and cleanly suppresses them during scroll slices.
  */

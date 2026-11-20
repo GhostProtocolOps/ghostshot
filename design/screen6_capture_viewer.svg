@@ -21,7 +21,7 @@
     <circle cx="15" cy="15" r="7" fill="none" stroke="#FFFFFF" stroke-width="2"/>
     <circle cx="15" cy="15" r="3" fill="#FFFFFF"/>
     
-    <text x="40" y="16" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="700">OmniSnap Capture Viewer</text>
+    <text x="40" y="16" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="700">GhostShot Capture Viewer</text>
     <text x="40" y="28" fill="#9CA3AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11">github.com/developer/project • 3840 × 12400 px @ 2x Retina</text>
   </g>
 

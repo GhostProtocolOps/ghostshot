@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-OmniSnap - Chrome Web Store & Multi-Browser Marketing Asset Pipeline
+GhostShot - Chrome Web Store & Multi-Browser Marketing Asset Pipeline
 Generates high-resolution vector SVGs, compiles them into a native FigCraft project,
 and renders pixel-perfect PNG store assets:
 - Small Promo Tile: 440x280
@@ -18,8 +18,9 @@ import json
 import zipfile
 import subprocess
 
-STORE_DIR = "/Users/nishant/Documents/gravity_work/gravity_1/store"
-DESIGN_DIR = "/Users/nishant/Documents/gravity_work/gravity_1/design"
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STORE_DIR = os.path.join(ROOT_DIR, "store")
+DESIGN_DIR = os.path.join(ROOT_DIR, "design")
 os.makedirs(STORE_DIR, exist_ok=True)
 os.makedirs(DESIGN_DIR, exist_ok=True)
 
@@ -75,7 +76,7 @@ def generate_promo_small():
   </g>
 
   <!-- Title & Subtitle -->
-  <text x="220" y="146" font-family="-apple-system, Roboto, sans-serif" font-size="24" font-weight="800" fill="url(#textGrad)" text-anchor="middle" letter-spacing="-0.5">OmniSnap</text>
+  <text x="220" y="146" font-family="-apple-system, Roboto, sans-serif" font-size="24" font-weight="800" fill="url(#textGrad)" text-anchor="middle" letter-spacing="-0.5">GhostShot</text>
   <text x="220" y="174" font-family="-apple-system, Roboto, sans-serif" font-size="13" font-weight="600" fill="#06B6D4" text-anchor="middle">Full-Page Capture & Continuous PDF</text>
 
   <!-- Badges -->
@@ -104,7 +105,7 @@ def generate_promo_marquee():
       <rect width="80" height="80" rx="22" fill="url(#primaryGrad)" filter="url(#shadow)"/>
       <path d="M26 34h28M26 42h20M26 50h28M40 26v28" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
     </g>
-    <text x="100" y="48" font-family="-apple-system, Roboto, sans-serif" font-size="36" font-weight="800" fill="url(#textGrad)">OmniSnap</text>
+    <text x="100" y="48" font-family="-apple-system, Roboto, sans-serif" font-size="36" font-weight="800" fill="url(#textGrad)">GhostShot</text>
     <text x="100" y="74" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="600" fill="#06B6D4">The Definitive Cross-Browser Capture Engine</text>
 
     <text x="0" y="145" font-family="-apple-system, Roboto, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="-1">One Continuous Long PDF.</text>
@@ -169,7 +170,7 @@ def generate_promo_large():
     <path d="M30 40h30M30 48h22M30 56h30M45 30v30" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
   </g>
 
-  <text x="460" y="195" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">OmniSnap</text>
+  <text x="460" y="195" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">GhostShot</text>
   <text x="460" y="228" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="600" fill="#06B6D4" text-anchor="middle">Next-Generation Full-Page Capture & Studio</text>
 
   <!-- Feature Grid -->
@@ -219,7 +220,7 @@ def generate_screenshot_1():
     <!-- Popup Header -->
     <rect width="360" height="60" rx="16" fill="#1F2937"/>
     <circle cx="36" cy="30" r="14" fill="url(#primaryGrad)"/>
-    <text x="62" y="36" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">OmniSnap</text>
+    <text x="62" y="36" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">GhostShot</text>
 
     <!-- Capture Mode 1 (Active) -->
     <g transform="translate(20, 80)">
@@ -466,7 +467,7 @@ def generate_screenshot_5():
       <circle cx="45" cy="45" r="20" fill="#10B981"/>
       <text x="45" y="52" font-size="16" text-anchor="middle">🛡️</text>
       <text x="80" y="38" font-family="-apple-system, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">100% Private & Offline Guarantee</text>
-      <text x="80" y="62" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">OmniSnap runs strictly on your computer. We never transmit images, browsing history, or telemetry.</text>
+      <text x="80" y="62" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">GhostShot runs strictly on your computer. We never transmit images, browsing history, or telemetry.</text>
     </g>
 
     <!-- PDF Settings Row -->
@@ -553,12 +554,12 @@ def main():
         print(f"  ✓ Created: {png_name} ({w}×{h} px)")
         generated_files.append((filename, png_name, w, h))
 
-    # Compile into FigCraft native project: design/OmniSnap_Store_Showcase.figcraft
-    figcraft_project = os.path.join(DESIGN_DIR, "OmniSnap_Store_Showcase.figcraft")
+    # Compile into FigCraft native project: design/GhostShot_Store_Showcase.figcraft
+    figcraft_project = os.path.join(DESIGN_DIR, "GhostShot_Store_Showcase.figcraft")
     figcraft_doc = {
         "document": {
             "id": "0:0",
-            "name": "OmniSnap - Chrome Web Store Graphics Suite",
+            "name": "GhostShot - Chrome Web Store Graphics Suite",
             "type": "DOCUMENT",
             "children": [
                 {

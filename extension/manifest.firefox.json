@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "OmniSnap - Full Page Screen Capture & Studio",
+  "name": "GhostShot - Full Page Screen Capture & Studio",
   "version": "2.0.0",
   "description": "Next-generation full-page screen capture, scroll container snapshot, and annotation studio.",
   "browser_action": {
@@ -27,7 +27,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "omnisnap-pro@gravity.local",
+      "id": "ghostshot-pro@gravity.local",
       "strict_min_version": "109.0"
     }
   },

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-High-Fidelity Multi-Resolution PNG Icon Renderer for OmniSnap
+High-Fidelity Multi-Resolution PNG Icon Renderer for GhostShot
 Renders squircle chassis, viewfinder reticle brackets, lens bezel, and 6-blade aperture iris.
 Generates: 16x16, 32x32, 48x48, 128x128, and 512x512 PNG assets.
 """

@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Capture Viewer Controller
+ * GhostShot - Capture Viewer Controller
  * Displays the full stitched screenshot immediately after capture with zoom, pan, and 1-click actions.
  * Supports Single Continuous Long Page PDF (1 page - no split) and multi-page smart splits.
  */
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const fmt = res.fmt || "png";
       const mime = fmt === "jpg" ? "image/jpeg" : "image/png";
       const ext = fmt === "jpg" ? "jpg" : "png";
-      const filename = `OmniSnap_${sanitizeFilename(currentSession ? currentSession.title : "screenshot")}.${ext}`;
+      const filename = `GhostShot_${sanitizeFilename(currentSession ? currentSession.title : "screenshot")}.${ext}`;
 
       const exportCanvas = getCompositeCanvas(stitchedSession);
       exportCanvas.toBlob((blob) => {
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
       }
 
-      const filename = `OmniSnap_${sanitizeFilename(currentSession ? currentSession.title : "capture")}.pdf`;
+      const filename = `GhostShot_${sanitizeFilename(currentSession ? currentSession.title : "capture")}.pdf`;
       const url = URL.createObjectURL(pdfBlob);
       const a = document.createElement("a");
       a.href = url;
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // 6. Recent Captures / History
   document.getElementById("btn-history").addEventListener("click", () => {
-    alert("OmniSnap Local Session History: All captures are stored securely on-device. Zero telemetry.");
+    alert("GhostShot Local Session History: All captures are stored securely on-device. Zero telemetry.");
   });
 
   // 7. Discard / Trash

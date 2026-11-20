@@ -25,7 +25,7 @@
     <circle cx="16" cy="16" r="3" fill="#FFFFFF"/>
     
     <!-- Title -->
-    <text x="42" y="18" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" font-weight="700">OmniSnap Pro</text>
+    <text x="42" y="18" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" font-weight="700">GhostShot Pro</text>
     <text x="42" y="30" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="500">v2.0 • Ultra Screen Capture</text>
 
     <!-- Header Actions -->

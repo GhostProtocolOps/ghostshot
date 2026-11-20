@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GhostShot - Screenshot Viewer</title>
+  <link rel="stylesheet" href="capture.css">
+  <script src="stitcher.js"></script>
+  <script src="pdf_engine.js"></script>
+</head>
+<body>
+  <div class="viewer-root">
+    <!-- Top Sticky Review Bar -->
+    <header class="viewer-topbar">
+      <div class="topbar-left">
+        <img src="../../icons/icon32.png" width="30" height="30" class="brand-logo" alt="GhostShot">
+        <div class="capture-info">
+          <div class="capture-title" id="display-title">Capture Viewer</div>
+          <div class="capture-meta" id="display-meta">Loading screenshot slices...</div>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <!-- Edit in Studio (Free Annotations, Shapes, Crop) -->
+        <button id="btn-edit-studio" class="action-btn studio-btn" title="Open Annotation Studio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+          Edit in Studio
+        </button>
+
+        <!-- Copy Image to Clipboard -->
+        <button id="btn-copy-image" class="action-btn copy-btn" title="Copy high-res screenshot to clipboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+          Copy Image
+        </button>
+
+        <!-- Download Image (PNG/JPG) -->
+        <button id="btn-download-image" class="action-btn outline-btn" title="Download Screenshot Image">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          <span id="download-img-label">Download PNG</span>
+        </button>
+
+        <!-- Download PDF with Instant Layout Dropdown -->
+        <div class="pdf-btn-group">
+          <button id="btn-download-pdf" class="action-btn pdf-btn" title="Export to PDF document">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            Download PDF
+          </button>
+          <select id="pdf-format-select" class="pdf-format-select" title="PDF Page Formatting">
+            <option value="full" selected>1 Continuous Long Page (No Split)</option>
+            <option value="a4">Split into A4 Pages</option>
+            <option value="letter">Split into US Letter</option>
+            <option value="legal">Split into US Legal</option>
+          </select>
+        </div>
+
+        <div class="divider-v"></div>
+
+        <!-- History / Recent Captures -->
+        <button id="btn-history" class="icon-btn" title="Recent Captures & Files">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+            <polyline points="13 2 13 9 20 9"/>
+          </svg>
+        </button>
+
+        <!-- Options / Settings -->
+        <button id="btn-settings" class="icon-btn" title="Extension Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+
+        <!-- Trash / Discard -->
+        <button id="btn-trash" class="icon-btn danger" title="Discard Screenshot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Center Scrollable Canvas Viewport -->
+    <main class="viewer-main" id="viewer-main">
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <canvas id="viewer-canvas"></canvas>
+      </div>
+    </main>
+
+    <!-- Floating Glass Zoom Capsule (Bottom-Center) -->
+    <div class="floating-zoom-bar">
+      <button id="zoom-out" class="zoom-btn" title="Zoom Out">-</button>
+      <span id="zoom-level" class="zoom-text">Fit</span>
+      <button id="zoom-in" class="zoom-btn" title="Zoom In">+</button>
+      <button id="zoom-fit" class="pill-btn">Fit Width</button>
+      <button id="zoom-actual" class="pill-btn">100%</button>
+    </div>
+
+    <!-- Minimap Radar (Bottom-Right) -->
+    <div class="minimap-panel" id="minimap-panel">
+      <div class="minimap-viewport" id="minimap-viewport">
+        <canvas id="minimap-canvas"></canvas>
+        <div class="minimap-lens" id="minimap-lens"></div>
+      </div>
+    </div>
+  </div>
+  <script src="capture.js"></script>
+</body>
+</html>

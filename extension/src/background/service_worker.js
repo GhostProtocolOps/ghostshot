@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Background Service Worker
+ * GhostShot - Background Service Worker
  * Orchestrates multi-slice captures, tab communication, keyboard shortcuts, and Studio opening.
  */
 
@@ -115,6 +115,6 @@ async function handleCaptureComplete(tabId, payload) {
 // Lifecycle listeners
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
-    console.log("OmniSnap installed successfully!");
+    console.log("GhostShot installed successfully!");
   }
 });

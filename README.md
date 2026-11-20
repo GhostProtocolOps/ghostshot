@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="store/promo_marquee_1400x560.png" alt="OmniSnap Banner" width="100%" />
+  <img src="store/promo_marquee_1400x560.png" alt="GhostShot Banner" width="100%" />
 </p>
 
-# OmniSnap — Next-Generation Full Page Screen Capture & Studio
+# GhostShot — Next-Generation Full Page Screen Capture & Studio
 
 > **100% Free • Zero Telemetry • 100% On-Device Processing • Cross-Browser**
 
-OmniSnap is a modern, high-performance browser extension for full-page screenshot capture, nested scroll container snapshots, and integrated client-side annotation studio. Built without subscription paywalls, third-party tracking, or cloud uploads.
+GhostShot is a modern, high-performance browser extension for full-page screenshot capture, nested scroll container snapshots, and integrated client-side annotation studio. Built without subscription paywalls, third-party tracking, or cloud uploads.
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-Pending%20Review-yellow.svg)](https://chrome.google.com/webstore)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -52,7 +52,7 @@ OmniSnap is a modern, high-performance browser extension for full-page screensho
 ## 🗂️ Project Structure
 
 ```
-OmniSnap/
+GhostShot/
 ├── extension/                 # Production Extension Source Code
 │   ├── manifest.json          # Chrome / Brave / Edge Manifest V3
 │   ├── manifest.firefox.json  # Mozilla Firefox Manifest V2
@@ -72,18 +72,17 @@ OmniSnap/
 │   ├── screenshot1_*.png      # 5 High-Resolution (1280x800) Store Screenshots
 │   └── CHROME_WEB_STORE_LISTING.md # Official Store Copy & Justifications
 ├── design/                    # UI/UX Designs & FigCraft Master Files
-│   ├── OmniSnap_Store_Showcase.figcraft # Native FigCraft Project
-│   └── omnisnap_design_artboard.html    # Standalone HTML Canvas Artboard
+│   ├── GhostShot_Store_Showcase.figcraft # Native FigCraft Project
+│   └── ghostshot_design_artboard.html    # Standalone HTML Canvas Artboard
 ├── docs/                      # Technical Documentation
-│   ├── UNIVERSAL_REVERSE_ENGINEERING_PLAYBOOK.md
 │   └── ARCHITECTURE.md
 ├── scripts/                   # Build & Automation Tooling
 │   ├── package_browsers.sh    # Multi-browser packaging script
 │   └── build_store_assets.py  # Automated asset generator
 ├── dist/                      # Ready-to-Install Distribution Bundles
-│   ├── omnisnap-chrome-brave-edge.zip
-│   ├── omnisnap-firefox.zip
-│   └── omnisnap-safari.zip
+│   ├── ghostshot-chrome-brave-edge.zip
+│   ├── ghostshot-firefox.zip
+│   └── ghostshot-safari.zip
 └── PRIVACY.md                 # Official Public Privacy Policy
 ```
 
@@ -94,8 +93,8 @@ OmniSnap/
 ### Load in Google Chrome / Brave / Microsoft Edge
 1. Clone this repository:
    ```bash
-   git clone https://github.com/GhostProtocolOps/omnisnap.git
-   cd omnisnap
+   git clone https://github.com/GhostProtocolOps/ghostshot.git
+   cd ghostshot
    ```
 2. Open Chrome and navigate to `chrome://extensions`.
 3. Enable **Developer mode** (top-right toggle).

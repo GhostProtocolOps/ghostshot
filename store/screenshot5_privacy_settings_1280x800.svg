@@ -52,7 +52,7 @@
       <circle cx="45" cy="45" r="20" fill="#10B981"/>
       <text x="45" y="52" font-size="16" text-anchor="middle">🛡️</text>
       <text x="80" y="38" font-family="-apple-system, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">100% Private & Offline Guarantee</text>
-      <text x="80" y="62" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">OmniSnap runs strictly on your computer. We never transmit images, browsing history, or telemetry.</text>
+      <text x="80" y="62" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">GhostShot runs strictly on your computer. We never transmit images, browsing history, or telemetry.</text>
     </g>
 
     <!-- PDF Settings Row -->

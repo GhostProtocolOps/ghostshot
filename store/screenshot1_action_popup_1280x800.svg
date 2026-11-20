@@ -49,7 +49,7 @@
     <!-- Popup Header -->
     <rect width="360" height="60" rx="16" fill="#1F2937"/>
     <circle cx="36" cy="30" r="14" fill="url(#primaryGrad)"/>
-    <text x="62" y="36" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">OmniSnap</text>
+    <text x="62" y="36" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">GhostShot</text>
 
     <!-- Capture Mode 1 (Active) -->
     <g transform="translate(20, 80)">

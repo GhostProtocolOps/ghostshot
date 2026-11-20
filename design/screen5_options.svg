@@ -16,7 +16,7 @@
       <rect width="36" height="36" rx="8" fill="url(#brand)"/>
       <circle cx="18" cy="18" r="8" fill="none" stroke="#FFFFFF" stroke-width="2"/>
       <circle cx="18" cy="18" r="3" fill="#FFFFFF"/>
-      <text x="50" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="20" font-weight="700">OmniSnap Pro Settings</text>
+      <text x="50" y="24" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="20" font-weight="700">GhostShot Pro Settings</text>
     </g>
 
     <!-- Card 1: Capture Engine -->
@@ -50,7 +50,7 @@
     <g transform="translate(0, 230)">
       <rect width="720" height="130" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
       <text x="24" y="32" fill="#10B981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="15" font-weight="600">Privacy &amp; Local Processing Guarantee</text>
-      <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">OmniSnap Pro operates 100% on your device. Unlike other extensions, we never send your screenshots,</text>
+      <text x="24" y="54" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">GhostShot Pro operates 100% on your device. Unlike other extensions, we never send your screenshots,</text>
       <text x="24" y="72" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">browsing history, or analytics to external servers. No Google Analytics. No telemetry.</text>
 
       <g transform="translate(24, 90)">

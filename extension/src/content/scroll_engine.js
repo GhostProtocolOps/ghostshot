@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Next-Gen Scroll Engine & Container Detector
+ * GhostShot - Next-Gen Scroll Engine & Container Detector
  * Identifies dynamic scroll containers (SPAs, Notion, Slack, overflow-y divs),
  * executes warmup sweeps, dispatches scroll events, and extracts links.
  */
@@ -82,7 +82,7 @@ window.OmniScrollEngine = (function() {
   function hideScrollbars() {
     if (!scrollbarStyleTag) {
       scrollbarStyleTag = document.createElement("style");
-      scrollbarStyleTag.id = "omnisnap-hide-scrollbars";
+      scrollbarStyleTag.id = "ghostshot-hide-scrollbars";
       scrollbarStyleTag.textContent = `
         ::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
         html, body, * { scrollbar-width: none !important; -ms-overflow-style: none !important; }

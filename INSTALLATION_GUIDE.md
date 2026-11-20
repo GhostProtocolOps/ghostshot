@@ -1,13 +1,13 @@
-# OmniSnap Pro — Cross-Browser Installation & Verification Guide
+# GhostShot Pro — Cross-Browser Installation & Verification Guide
 
-This guide walks through loading and verifying **OmniSnap Pro** across **Chrome, Brave, Edge, Firefox, and Safari**.
+This guide walks through loading and verifying **GhostShot Pro** across **Chrome, Brave, Edge, Firefox, and Safari**.
 
 ---
 
 ## 1. Google Chrome, Brave Browser & Microsoft Edge (Manifest V3)
 
 All Chromium-based browsers use the unpacked directory at:  
-`file:///Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-chromium`
+`file:///Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-chromium`
 
 ### For Google Chrome:
 1. Open Google Chrome.
@@ -15,36 +15,36 @@ All Chromium-based browsers use the unpacked directory at:
 3. Toggle on **Developer mode** in the top-right corner.
 4. Click the **Load unpacked** button (top-left).
 5. Select the directory:
-   `/Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-chromium`
-6. OmniSnap Pro will appear in your extensions toolbar! Click the extension pin or press `Alt+Shift+P` (`Option+Shift+P` on Mac).
+   `/Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-chromium`
+6. GhostShot Pro will appear in your extensions toolbar! Click the extension pin or press `Alt+Shift+P` (`Option+Shift+P` on Mac).
 
 ### For Brave Browser:
 1. Open Brave.
 2. Navigate to: `brave://extensions`
 3. Toggle on **Developer mode** (top-right).
 4. Click **Load unpacked** and select:
-   `/Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-chromium`
+   `/Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-chromium`
 
 ### For Microsoft Edge:
 1. Open Microsoft Edge.
 2. Navigate to: `edge://extensions`
 3. Toggle on **Developer mode** in the left sidebar.
 4. Click **Load unpacked** and select:
-   `/Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-chromium`
+   `/Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-chromium`
 
 ---
 
 ## 2. Mozilla Firefox (Gecko WebExtension)
 
 Firefox uses the bundle at:  
-`file:///Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-firefox`
+`file:///Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-firefox`
 
 1. Open Firefox.
 2. In the URL address bar, enter: `about:debugging#/runtime/this-firefox`
 3. Click the **Load Temporary Add-on...** button.
 4. Browse to and select:
-   `/Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-firefox/manifest.json`
-5. OmniSnap Pro is now active in Firefox for testing and capturing.
+   `/Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-firefox/manifest.json`
+5. GhostShot Pro is now active in Firefox for testing and capturing.
 
 ---
 
@@ -57,7 +57,7 @@ Safari supports W3C WebExtensions natively on macOS Ventura, Sonoma, and Sequoia
 3. Click the **Advanced** tab and check **"Show features for web developers"** (or **"Show Develop menu in menu bar"**).
 4. In the Safari menu bar, click the new **Develop** menu and check **"Allow Unsigned Extensions"**.
 5. You can now load the unpacked extension directly from:
-   `/Users/nishant/Documents/gravity_work/gravity_1/dist/omnisnap-safari`  
+   `/Users/nishant/Documents/gravity_work/GhostShot/dist/ghostshot-safari`  
    or import the Xcode companion wrapper.
 
 ---

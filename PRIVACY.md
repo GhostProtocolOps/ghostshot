@@ -1,11 +1,11 @@
-# OmniSnap — Privacy Policy
+# GhostShot — Privacy Policy
 
 **Last Updated:** November 20, 2026
 
-OmniSnap ("we", "our", or "the extension") is designed with a strict **Zero Telemetry and 100% On-Device Local Privacy** principle.
+GhostShot ("we", "our", or "the extension") is designed with a strict **Zero Telemetry and 100% On-Device Local Privacy** principle.
 
 ## 1. No Data Collection
-OmniSnap does NOT collect, store, transmit, or share any personal data, browsing history, web content, passwords, or personal credentials. 
+GhostShot does NOT collect, store, transmit, or share any personal data, browsing history, web content, passwords, or personal credentials. 
 
 ## 2. On-Device Local Processing
 - All screen captures, scrolling slice stitching, cropping, and annotations are executed entirely in the client-side JavaScript engine inside your browser session.
@@ -19,7 +19,7 @@ OmniSnap does NOT collect, store, transmit, or share any personal data, browsing
 - **`downloads`**: Used solely to save your exported images or PDF documents to your local disk when you click the download button.
 
 ## 4. No Third-Party Analytics
-OmniSnap contains zero Google Analytics, zero telemetry trackers, zero tracking pixels, and zero advertising libraries.
+GhostShot contains zero Google Analytics, zero telemetry trackers, zero tracking pixels, and zero advertising libraries.
 
 ## 5. Contact
 For any questions or privacy inquiries, contact the developer at:

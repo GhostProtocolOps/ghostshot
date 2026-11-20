@@ -30,7 +30,7 @@ def get_env_var(name, default=""):
         os.path.join(os.getcwd(), ".env"),
         os.path.expanduser("~/.gemini/config/.env"),
         os.path.expanduser("~/.env"),
-        "/Users/nishant/Documents/gravity_work/gravity_1/.env"
+        "/Users/nishant/Documents/gravity_work/GhostShot/.env"
     ]
     for env_path in candidates:
         if os.path.exists(env_path):

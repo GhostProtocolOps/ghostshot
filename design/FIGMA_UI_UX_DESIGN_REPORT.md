@@ -1,4 +1,4 @@
-# OmniSnap Pro — Complete Figma UI/UX Design Report
+# GhostShot Pro — Complete Figma UI/UX Design Report
 
 **Design Lead**: AI Multi-Model Fleet (FigCraft & `free/gpt-6-luna`)  
 **Design System**: OmniDesign Glassmorphic Dark & Light Design System  
@@ -9,7 +9,7 @@
 
 ## 1. Visual Hierarchy & Design System Foundations
 
-OmniSnap Pro addresses GoFullPage's outdated, clunky UI with an ultra-clean, modern aesthetic inspired by Raycast, Linear, and macOS Sonoma.
+GhostShot Pro delivers an ultra-clean, modern aesthetic inspired by Raycast, Linear, and macOS Sonoma.
 
 ### 1.1 Color Tokens
 - **Primary Brand Gradient**: `linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)` (Electric Indigo to Vivid Cyan).
@@ -28,7 +28,7 @@ OmniSnap Pro addresses GoFullPage's outdated, clunky UI with an ultra-clean, mod
 - **Frame Dimensions**: `360px` width x `470px` height.
 - **Top Brand Bar**:
   - Logo icon: Dual-ring camera aperture gradient badge.
-  - App Name: `OmniSnap Pro` with subtle version pill `v2.0`.
+  - App Name: `GhostShot Pro` with subtle version pill `v2.0`.
   - Right Icon Actions: History clock icon button, Settings gear icon button.
 - **Hero Capture Card (Interactive Grid of 4 Modes)**:
   1. **Full Page Capture** (Primary, Glowing border accent):
@@ -111,7 +111,7 @@ OmniSnap Pro addresses GoFullPage's outdated, clunky UI with an ultra-clean, mod
   - `PDF Smart Multi-Page` (Splits into A4, Letter, Legal pages without cutting lines of text in half; preserves clickable web hyperlinks!).
   - `PDF Continuous` (Single long sheet).
 - **Filename Builder**:
-  - Live preview: `OmniSnap_google_com_2026-11-20_0515.png`
+  - Live preview: `GhostShot_google_com_2026-11-20_0515.png`
   - Token chips: `[Domain]`, `[Page Title]`, `[Date]`, `[Time]`.
 - **Primary Buttons**:
   - Primary: `"Download Image"` (Large gradient CTA).

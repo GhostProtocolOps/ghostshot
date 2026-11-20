@@ -45,7 +45,7 @@
   </g>
 
   <!-- Title & Subtitle -->
-  <text x="220" y="146" font-family="-apple-system, Roboto, sans-serif" font-size="24" font-weight="800" fill="url(#textGrad)" text-anchor="middle" letter-spacing="-0.5">OmniSnap</text>
+  <text x="220" y="146" font-family="-apple-system, Roboto, sans-serif" font-size="24" font-weight="800" fill="url(#textGrad)" text-anchor="middle" letter-spacing="-0.5">GhostShot</text>
   <text x="220" y="174" font-family="-apple-system, Roboto, sans-serif" font-size="13" font-weight="600" fill="#06B6D4" text-anchor="middle">Full-Page Capture & Continuous PDF</text>
 
   <!-- Badges -->

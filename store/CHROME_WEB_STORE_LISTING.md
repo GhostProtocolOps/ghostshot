@@ -6,12 +6,12 @@ Use this document to fill out the **Chrome Web Store Developer Dashboard** (`htt
 
 ## 1. Product Details
 
-- **Extension Name**: OmniSnap - Full Page Screen Capture & Studio
+- **Extension Name**: GhostShot - Full Page Screen Capture & Studio
 - **Version**: `2.0.0`
 - **Primary Category**: Productivity
 - **Secondary Category**: Photos
 - **Language**: English (United States)
-- **ZIP Package**: `dist/omnisnap-chrome-brave-edge.zip`
+- **ZIP Package**: `dist/ghostshot-chrome-brave-edge.zip`
 
 ---
 
@@ -22,9 +22,9 @@ Use this document to fill out the **Chrome Web Store Developer Dashboard** (`htt
 
 ### Detailed Description:
 ```markdown
-OmniSnap is the next-generation, 100% free, and private full-page screenshot capture extension and annotation studio.
+GhostShot is the next-generation, 100% free, and private full-page screenshot capture extension and annotation studio.
 
-Tired of screenshot tools that paywall basic features like cropping, annotations, and PDF exports? OmniSnap gives you a full-featured professional studio directly in your browser with ZERO paywalls and ZERO tracking telemetry.
+Tired of screenshot tools that paywall basic features like cropping, annotations, and PDF exports? GhostShot gives you a full-featured professional studio directly in your browser with ZERO paywalls and ZERO tracking telemetry.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 ⭐ KEY CAPABILITIES
@@ -86,22 +86,22 @@ When submitting, Google's review team requires an explanation for every requeste
 All graphics have been generated and saved to the `store/` folder, ready for direct upload to the Chrome Web Store Developer Console:
 
 ### A. Promotional Tiles & Marquee Banners
-- **Small Promo Tile (440 × 280 px)**: [store/promo_small_440x280.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/promo_small_440x280.png)
-- **Large Promo Tile (920 × 680 px)**: [store/promo_large_920x680.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/promo_large_920x680.png)
-- **Marquee Banner (1400 × 560 px)**: [store/promo_marquee_1400x560.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/promo_marquee_1400x560.png)
+- **Small Promo Tile (440 × 280 px)**: [store/promo_small_440x280.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/promo_small_440x280.png)
+- **Large Promo Tile (920 × 680 px)**: [store/promo_large_920x680.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/promo_large_920x680.png)
+- **Marquee Banner (1400 × 560 px)**: [store/promo_marquee_1400x560.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/promo_marquee_1400x560.png)
 
 ### B. High-Resolution Store Showcase Screenshots (1280 × 800 px)
-1. **Screenshot 1 — 4 Powerful Capture Modes**: [store/screenshot1_action_popup_1280x800.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/screenshot1_action_popup_1280x800.png)
+1. **Screenshot 1 — 4 Powerful Capture Modes**: [store/screenshot1_action_popup_1280x800.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/screenshot1_action_popup_1280x800.png)
    - *Caption*: "1-Click Full Page, Selection, Viewport & Scroll Container Capture."
-2. **Screenshot 2 — Ultra-Long Page Viewer & Minimap**: [store/screenshot2_long_screenshot_viewer_1280x800.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/screenshot2_long_screenshot_viewer_1280x800.png)
+2. **Screenshot 2 — Ultra-Long Page Viewer & Minimap**: [store/screenshot2_long_screenshot_viewer_1280x800.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/screenshot2_long_screenshot_viewer_1280x800.png)
    - *Caption*: "Stitches 15,000+ px pages with zero memory limits and real-time minimap radar."
-3. **Screenshot 3 — 100% Free Annotation Studio**: [store/screenshot3_free_annotation_studio_1280x800.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/screenshot3_free_annotation_studio_1280x800.png)
+3. **Screenshot 3 — 100% Free Annotation Studio**: [store/screenshot3_free_annotation_studio_1280x800.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/screenshot3_free_annotation_studio_1280x800.png)
    - *Caption*: "Crop, 1-2-3 Step Badges, Privacy Redaction Blur & Mockups with zero subscriptions."
-4. **Screenshot 4 — Single Continuous Long Page PDF**: [store/screenshot4_continuous_pdf_export_1280x800.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/screenshot4_continuous_pdf_export_1280x800.png)
+4. **Screenshot 4 — Single Continuous Long Page PDF**: [store/screenshot4_continuous_pdf_export_1280x800.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/screenshot4_continuous_pdf_export_1280x800.png)
    - *Caption*: "Export 1 seamless endless PDF page without forced splitting or smart A4 split."
-5. **Screenshot 5 — 100% Local On-Device Privacy**: [store/screenshot5_privacy_settings_1280x800.png](file:///Users/nishant/Documents/gravity_work/gravity_1/store/screenshot5_privacy_settings_1280x800.png)
+5. **Screenshot 5 — 100% Local On-Device Privacy**: [store/screenshot5_privacy_settings_1280x800.png](file:///Users/nishant/Documents/gravity_work/GhostShot/store/screenshot5_privacy_settings_1280x800.png)
    - *Caption*: "Zero tracking, zero analytics, and customizable capture heuristics."
 
 ### C. Native FigCraft Design Files
-- Master Showcase Project: [design/OmniSnap_Store_Showcase.figcraft](file:///Users/nishant/Documents/gravity_work/gravity_1/design/OmniSnap_Store_Showcase.figcraft)
-- Design Artboard HTML Canvas: [design/omnisnap_design_artboard.html](file:///Users/nishant/Documents/gravity_work/gravity_1/design/omnisnap_design_artboard.html)
+- Master Showcase Project: [design/GhostShot_Store_Showcase.figcraft](file:///Users/nishant/Documents/gravity_work/GhostShot/design/GhostShot_Store_Showcase.figcraft)
+- Design Artboard HTML Canvas: [design/ghostshot_design_artboard.html](file:///Users/nishant/Documents/gravity_work/GhostShot/design/ghostshot_design_artboard.html)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-End-to-End Verification of OmniSnap Pro on Apple Product Page Dimensions
+End-to-End Verification of GhostShot Pro on Apple Product Page Dimensions
 Simulates capturing the 11,390px tall Apple MacBook Pro buy page, generating:
 1. Multi-slice capture plan
 2. Sticky header suppression heuristic
@@ -25,7 +25,7 @@ def simulate_apple_page():
     dpr = 2.0
 
     print("========================================================")
-    print(" OmniSnap Pro — Live Capture & Pagination Verification")
+    print(" GhostShot Pro — Live Capture & Pagination Verification")
     print(" Target: Apple MacBook Pro Buy Page (11,390px tall)")
     print(f" Viewport: {window_width}x{window_height} | Full Height: {page_height}px | DPR: {dpr}x")
     print("========================================================")

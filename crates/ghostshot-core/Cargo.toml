@@ -1,0 +1,16 @@
+[package]
+name = "ghostshot-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["GhostShot Core Team"]
+description = "High-performance coordinate stitching, tile calculation, and link annotation engine for GhostShot"
+
+[dependencies]
+
+[[bin]]
+name = "ghostshot-cli"
+path = "src/main.rs"
+
+[lib]
+name = "ghostshot_core"
+path = "src/lib.rs"

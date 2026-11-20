@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Canvas Stitcher Engine
+ * GhostShot - Canvas Stitcher Engine
  * Assembles slice images onto HTML5 2D Canvas with retina DPR scaling and memory tile chunking.
  */
 

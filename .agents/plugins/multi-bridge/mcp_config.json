@@ -3,7 +3,7 @@
     "multi-bridge": {
       "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
       "args": [
-        "/Users/nishant/Documents/gravity_work/gravity_1/.agents/plugins/multi-bridge/multi_bridge_mcp.py"
+        "/Users/nishant/Documents/gravity_work/GhostShot/.agents/plugins/multi-bridge/multi_bridge_mcp.py"
       ],
       "env": {
         "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"

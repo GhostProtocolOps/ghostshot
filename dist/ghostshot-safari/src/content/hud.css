@@ -1,0 +1,90 @@
+/* In-Page Capture HUD Stylesheet */
+#ghostshot-hud-root {
+  position: fixed !important;
+  top: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2147483647 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  box-sizing: border-box !important;
+}
+
+.ghostshot-hud-capsule {
+  display: flex !important;
+  align-items: center !important;
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 9999px !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 15px rgba(79, 70, 229, 0.3) !important;
+  color: #F8FAFC !important;
+  gap: 14px !important;
+  min-width: 320px !important;
+}
+
+.ghostshot-hud-ring {
+  position: relative !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.ghostshot-hud-track {
+  fill: none !important;
+  stroke: #334155 !important;
+  stroke-width: 3.5 !important;
+}
+
+.ghostshot-hud-fill {
+  fill: none !important;
+  stroke: #06B6D4 !important;
+  stroke-width: 3.5 !important;
+  stroke-dasharray: 100.53 !important;
+  stroke-dashoffset: 100.53 !important;
+  stroke-linecap: round !important;
+  transition: stroke-dashoffset 0.2s ease !important;
+}
+
+.ghostshot-hud-pct {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #F8FAFC !important;
+}
+
+.ghostshot-hud-info {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+}
+
+.ghostshot-hud-title {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #F8FAFC !important;
+}
+
+.ghostshot-hud-sub {
+  font-size: 11px !important;
+  color: #94A3B8 !important;
+}
+
+.ghostshot-hud-cancel {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+  color: #EF4444 !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+}
+
+.ghostshot-hud-cancel:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: #EF4444 !important;
+}

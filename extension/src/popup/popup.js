@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Popup Controller
+ * GhostShot - Popup Controller
  */
 
 document.addEventListener("DOMContentLoaded", () => {

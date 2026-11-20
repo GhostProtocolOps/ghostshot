@@ -16,7 +16,7 @@ def get_env_var(name, default=""):
     if val:
         return val
     # Try reading from workspace .env
-    env_file = "/Users/nishant/Documents/gravity_work/gravity_1/.env"
+    env_file = "/Users/nishant/Documents/gravity_work/GhostShot/.env"
     if os.path.exists(env_file):
         try:
             with open(env_file, "r") as f:

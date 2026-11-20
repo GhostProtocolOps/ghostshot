@@ -45,7 +45,7 @@
       <rect width="80" height="80" rx="22" fill="url(#primaryGrad)" filter="url(#shadow)"/>
       <path d="M26 34h28M26 42h20M26 50h28M40 26v28" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
     </g>
-    <text x="100" y="48" font-family="-apple-system, Roboto, sans-serif" font-size="36" font-weight="800" fill="url(#textGrad)">OmniSnap</text>
+    <text x="100" y="48" font-family="-apple-system, Roboto, sans-serif" font-size="36" font-weight="800" fill="url(#textGrad)">GhostShot</text>
     <text x="100" y="74" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="600" fill="#06B6D4">The Definitive Cross-Browser Capture Engine</text>
 
     <text x="0" y="145" font-family="-apple-system, Roboto, sans-serif" font-size="44" font-weight="900" fill="#FFFFFF" letter-spacing="-1">One Continuous Long PDF.</text>

@@ -1,5 +1,5 @@
 /**
- * OmniSnap Studio - Interactive Annotation & Mockup Controller
+ * GhostShot Studio - Interactive Annotation & Mockup Controller
  */
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       currentSession = res.session;
       document.getElementById("display-title").textContent = currentSession.title || "Full Page Capture";
       document.getElementById("window-url-display").textContent = currentSession.url || "https://example.com";
-      document.getElementById("export-filename").value = `OmniSnap_${sanitizeFilename(currentSession.title || "capture")}.png`;
+      document.getElementById("export-filename").value = `GhostShot_${sanitizeFilename(currentSession.title || "capture")}.png`;
 
       // Stitch captured slices using the stitcher engine
       const stitched = await window.OmniStitcher.stitchSlices(currentSession);
@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   document.getElementById("modal-btn-download").addEventListener("click", async () => {
-    let filename = document.getElementById("export-filename").value || "OmniSnap_Capture.png";
+    let filename = document.getElementById("export-filename").value || "GhostShot_Capture.png";
     const activeTab = document.querySelector(".format-tabs .tab-btn.active");
     const fmt = activeTab ? activeTab.dataset.fmt : "png";
     const merged = getMergedCanvas();

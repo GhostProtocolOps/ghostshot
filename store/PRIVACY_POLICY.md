@@ -1,20 +1,20 @@
-# Privacy Policy for OmniSnap
+# Privacy Policy for GhostShot
 
 **Last Updated**: November 2026
 
-OmniSnap ("we", "our", or "the extension") is committed to protecting your privacy. This Privacy Policy explains our practices regarding data collection and usage.
+GhostShot ("we", "our", or "the extension") is committed to protecting your privacy. This Privacy Policy explains our practices regarding data collection and usage.
 
 ---
 
 ## 1. Single Purpose
-OmniSnap exists solely to capture full-page web screenshots, provide on-device annotation tools, and export image/PDF files locally to the user's machine.
+GhostShot exists solely to capture full-page web screenshots, provide on-device annotation tools, and export image/PDF files locally to the user's machine.
 
 ---
 
 ## 2. Zero Data Collection & Zero Telemetry
-- **No Personal Data Collected**: OmniSnap does not collect, log, store, or transmit any personally identifiable information (PII).
+- **No Personal Data Collected**: GhostShot does not collect, log, store, or transmit any personally identifiable information (PII).
 - **No Browsing History Collected**: We do not monitor, record, or transmit URLs or web content you visit.
-- **Zero Third-Party Tracking**: Unlike other screenshot extensions, OmniSnap contains **no Google Analytics, no telemetry, no advertising trackers, and no third-party tracking scripts**.
+- **Zero Third-Party Tracking**: Unlike other screenshot extensions, GhostShot contains **no Google Analytics, no telemetry, no advertising trackers, and no third-party tracking scripts**.
 
 ---
 
@@ -27,7 +27,7 @@ All screenshot slicing, canvas stitching, and image annotations occur **100% loc
 ---
 
 ## 4. Permissions Justification
-OmniSnap requests only the minimal permissions required to capture and edit screenshots:
+GhostShot requests only the minimal permissions required to capture and edit screenshots:
 - `activeTab`: Used only when you explicitly invoke the extension to access the current tab and trigger the capture.
 - `scripting`: Required to inject the scrolling and coordinate calculation scripts into the active page.
 - `storage` / `unlimitedStorage`: Used strictly to save your local extension preferences (e.g. delay settings) and temporary local snapshot drafts.

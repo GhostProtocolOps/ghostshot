@@ -1,5 +1,5 @@
 /**
- * OmniSnap - Floating Capture HUD
+ * GhostShot - Floating Capture HUD
  * In-page animated circular progress ring and live slice counter with Esc/Cancel support.
  */
 
@@ -13,32 +13,32 @@ window.OmniHUD = (function() {
 
   function createHUD(onCancel) {
     onCancelCallback = onCancel;
-    if (document.getElementById("omnisnap-hud-root")) return;
+    if (document.getElementById("ghostshot-hud-root")) return;
 
     hudContainer = document.createElement("div");
-    hudContainer.id = "omnisnap-hud-root";
+    hudContainer.id = "ghostshot-hud-root";
     hudContainer.innerHTML = `
-      <div class="omnisnap-hud-capsule">
-        <div class="omnisnap-hud-ring">
+      <div class="ghostshot-hud-capsule">
+        <div class="ghostshot-hud-ring">
           <svg width="40" height="40" viewBox="0 0 40 40">
-            <circle cx="20" cy="20" r="16" class="omnisnap-hud-track"></circle>
-            <circle cx="20" cy="20" r="16" class="omnisnap-hud-fill" id="omnisnap-hud-circle" transform="rotate(-90 20 20)"></circle>
+            <circle cx="20" cy="20" r="16" class="ghostshot-hud-track"></circle>
+            <circle cx="20" cy="20" r="16" class="ghostshot-hud-fill" id="ghostshot-hud-circle" transform="rotate(-90 20 20)"></circle>
           </svg>
-          <span class="omnisnap-hud-pct" id="omnisnap-hud-pct">0%</span>
+          <span class="ghostshot-hud-pct" id="ghostshot-hud-pct">0%</span>
         </div>
-        <div class="omnisnap-hud-info">
-          <div class="omnisnap-hud-title">Capturing Full Page...</div>
-          <div class="omnisnap-hud-sub" id="omnisnap-hud-status">Initializing capture engine</div>
+        <div class="ghostshot-hud-info">
+          <div class="ghostshot-hud-title">Capturing Full Page...</div>
+          <div class="ghostshot-hud-sub" id="ghostshot-hud-status">Initializing capture engine</div>
         </div>
-        <button class="omnisnap-hud-cancel" id="omnisnap-hud-btn-cancel">Cancel (Esc)</button>
+        <button class="ghostshot-hud-cancel" id="ghostshot-hud-btn-cancel">Cancel (Esc)</button>
       </div>
     `;
 
     document.body.appendChild(hudContainer);
-    progressCircle = document.getElementById("omnisnap-hud-circle");
-    statusText = document.getElementById("omnisnap-hud-status");
+    progressCircle = document.getElementById("ghostshot-hud-circle");
+    statusText = document.getElementById("ghostshot-hud-status");
 
-    document.getElementById("omnisnap-hud-btn-cancel").addEventListener("click", () => {
+    document.getElementById("ghostshot-hud-btn-cancel").addEventListener("click", () => {
       destroyHUD();
       if (onCancelCallback) onCancelCallback();
     });
@@ -60,7 +60,7 @@ window.OmniHUD = (function() {
     if (progressCircle) {
       progressCircle.style.strokeDashoffset = dashOffset;
     }
-    const pctLabel = document.getElementById("omnisnap-hud-pct");
+    const pctLabel = document.getElementById("ghostshot-hud-pct");
     if (pctLabel) {
       pctLabel.textContent = Math.round(fraction * 100) + "%";
     }
@@ -93,7 +93,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         sendResponse({ success: true });
       })
       .catch((err) => {
-        console.error("OmniSnap capture error:", err);
+        console.error("GhostShot capture error:", err);
         sendResponse({ success: false, error: err.message });
       });
     return true; // Keep sendResponse open

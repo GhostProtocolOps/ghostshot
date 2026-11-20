@@ -43,7 +43,7 @@
     <path d="M30 40h30M30 48h22M30 56h30M45 30v30" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
   </g>
 
-  <text x="460" y="195" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">OmniSnap</text>
+  <text x="460" y="195" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">GhostShot</text>
   <text x="460" y="228" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="600" fill="#06B6D4" text-anchor="middle">Next-Generation Full-Page Capture & Studio</text>
 
   <!-- Feature Grid -->

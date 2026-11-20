@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "OmniSnap - Full Page Screen Capture & Studio",
+  "name": "GhostShot - Full Page Screen Capture & Studio",
   "version": "2.0.0",
   "description": "Full-page screen capture, scroll container snapshots, and pro annotation studio. 100% private, no tracking.",
   "action": {

@@ -1,5 +1,5 @@
 /* In-Page Capture HUD Stylesheet */
-#omnisnap-hud-root {
+#ghostshot-hud-root {
   position: fixed !important;
   top: 24px !important;
   left: 50% !important;
@@ -9,7 +9,7 @@
   box-sizing: border-box !important;
 }
 
-.omnisnap-hud-capsule {
+.ghostshot-hud-capsule {
   display: flex !important;
   align-items: center !important;
   background: rgba(15, 23, 42, 0.88) !important;
@@ -23,19 +23,19 @@
   min-width: 320px !important;
 }
 
-.omnisnap-hud-ring {
+.ghostshot-hud-ring {
   position: relative !important;
   width: 40px !important;
   height: 40px !important;
 }
 
-.omnisnap-hud-track {
+.ghostshot-hud-track {
   fill: none !important;
   stroke: #334155 !important;
   stroke-width: 3.5 !important;
 }
 
-.omnisnap-hud-fill {
+.ghostshot-hud-fill {
   fill: none !important;
   stroke: #06B6D4 !important;
   stroke-width: 3.5 !important;
@@ -45,7 +45,7 @@
   transition: stroke-dashoffset 0.2s ease !important;
 }
 
-.omnisnap-hud-pct {
+.ghostshot-hud-pct {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -55,24 +55,24 @@
   color: #F8FAFC !important;
 }
 
-.omnisnap-hud-info {
+.ghostshot-hud-info {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
 }
 
-.omnisnap-hud-title {
+.ghostshot-hud-title {
   font-size: 13px !important;
   font-weight: 600 !important;
   color: #F8FAFC !important;
 }
 
-.omnisnap-hud-sub {
+.ghostshot-hud-sub {
   font-size: 11px !important;
   color: #94A3B8 !important;
 }
 
-.omnisnap-hud-cancel {
+.ghostshot-hud-cancel {
   background: rgba(239, 68, 68, 0.15) !important;
   border: 1px solid rgba(239, 68, 68, 0.4) !important;
   color: #EF4444 !important;
@@ -84,7 +84,7 @@
   transition: all 0.15s ease !important;
 }
 
-.omnisnap-hud-cancel:hover {
+.ghostshot-hud-cancel:hover {
   background: rgba(239, 68, 68, 0.25) !important;
   border-color: #EF4444 !important;
 }
