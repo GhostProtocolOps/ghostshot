@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "GhostShot - Full Page Screen Capture & Studio",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Next-generation full-page screen capture, scroll container snapshot, and annotation studio.",
   "browser_action": {
     "default_icon": "icons/icon48.png",

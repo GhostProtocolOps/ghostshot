@@ -22,10 +22,12 @@ The `OmniCrawler` is responsible for recursively inspecting document hierarchyâ€
   - For each element with an open `shadowRoot`, recursively traverses `shadowRoot.children`.
   - Bypasses `ghostshot-hud-root` to keep the progress UI visible.
   - Resolves computed style via `window.getComputedStyle(el)`.
-  - Inspects `el.getBoundingClientRect()`. Filters out elements with `width <= 0 || height <= 0`.
+  - Evaluates `isRenderedFixed(el, style)`:
+    - Bypasses zero-dimension filtering for container elements: if `position === 'fixed'` and `style.display !== 'none'`, elements with `childElementCount > 0`, `clientRects.length > 0`, or `scrollWidth/scrollHeight > 0` (e.g. `#top-nav-bar` containing absolute `#pagetop`) are explicitly included.
+  - Evaluates `isSticky(el, style)` for `position === 'sticky' || position === '-webkit-sticky'`.
 - **Outputs**:
-  - `fixedElements`: Array of elements resolving to `position === 'fixed'`.
-  - `stickyElements`: Array of elements resolving to `position === 'sticky' || position === '-webkit-sticky'`.
+  - `fixedElements`: Array of elements resolving to viewport-anchored fixed positioning.
+  - `stickyElements`: Array of elements resolving to sticky positioning.
 - **Postconditions**:
   - Zero DOM mutations. Pure inspection.
 
@@ -35,19 +37,34 @@ The `OmniCrawler` is responsible for recursively inspecting document hierarchyâ€
 - **Preconditions**:
   - `elements` is an array of sticky DOM elements discovered via `findFixedAndStickyElements()`.
 - **Behavior**:
-  - Caches original `position` and `top` properties in an internal restoration stack:
+  - Idempotently caches original `position` and `top` in `originalStylesMap` (WeakMap/Map):
     ```javascript
-    modifiedElements.push({
-      element: el,
-      type: "sticky",
-      originalPosition: el.style.position || "",
-      originalTop: el.style.top || ""
-    });
+    if (!originalStylesMap.has(el)) {
+      originalStylesMap.set(el, {
+        type: "sticky",
+        position: el.style.position || "",
+        top: el.style.top || ""
+      });
+    }
     ```
   - Applies atomic overrides:
     ```javascript
     el.style.setProperty("position", "static", "important");
     el.style.setProperty("top", "auto", "important");
+    ```
+
+---
+
+### `hideFixedElements(elements: HTMLElement[]): void`
+- **Preconditions**:
+  - `elements` is an array of fixed DOM elements discovered via `findFixedAndStickyElements()`.
+- **Behavior**:
+  - Idempotently caches original `display`, `visibility`, and `opacity` in `originalStylesMap`.
+  - Applies atomic suppression removing out-of-flow subtree from rendering:
+    ```javascript
+    el.style.setProperty("display", "none", "important");
+    el.style.setProperty("visibility", "hidden", "important");
+    el.style.setProperty("opacity", "0", "important");
     ```
 - **Postconditions**:
   - Sticky headers and toolbars remain anchored in their natural layout coordinates in document flow.

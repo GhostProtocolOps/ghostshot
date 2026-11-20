@@ -2,10 +2,13 @@
  * GhostShot - Recursive Shadow DOM & Sticky/Fixed Element Crawler
  * Traverses both light DOM and open Shadow DOM trees to discover fixed/sticky elements
  * and cleanly suppresses them during scroll slices to guarantee 100% GoFullPage visual parity.
+ * Supports zero-height container anchors (e.g. #top-nav-bar containing absolute #pagetop)
+ * and dynamic scroll-triggered header suppression.
  */
 
 window.OmniCrawler = (function () {
-  const modifiedElements = [];
+  // Map keyed by Element preserving pre-capture styles for idempotent restore
+  const originalStylesMap = new Map();
 
   function walkDom(root, callback) {
     if (!root) return;
@@ -26,6 +29,34 @@ window.OmniCrawler = (function () {
     }
   }
 
+  function isRenderedFixed(el, style) {
+    if (style.position !== "fixed") return false;
+    if (style.display === "none") return false;
+
+    // 1. Direct bounding box dimensions
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) return true;
+
+    // 2. Client rects (for inline wrappers or zero-dimension wrappers)
+    if (el.getClientRects && el.getClientRects().length > 0) return true;
+
+    // 3. Overflow or scroll dimensions
+    if (el.scrollWidth > 0 || el.scrollHeight > 0) return true;
+
+    // 4. Zero-height/zero-width container with non-empty children
+    // (e.g. #top-nav-bar has height: 0, but child #pagetop has height: 56)
+    if (el.childElementCount > 0) return true;
+
+    return false;
+  }
+
+  function isSticky(el, style) {
+    const pos = style.position;
+    if (pos !== "sticky" && pos !== "-webkit-sticky") return false;
+    if (style.display === "none") return false;
+    return true;
+  }
+
   function findFixedAndStickyElements() {
     const fixedElements = [];
     const stickyElements = [];
@@ -43,18 +74,10 @@ window.OmniCrawler = (function () {
 
       if (!style) return;
 
-      const position = style.position;
-      if (position === "fixed") {
-        const rect = el.getBoundingClientRect();
-        // Include any fixed element with non-zero dimensions
-        if (rect.width > 0 && rect.height > 0) {
-          fixedElements.push(el);
-        }
-      } else if (position === "sticky" || position === "-webkit-sticky") {
-        const rect = el.getBoundingClientRect();
-        if (rect.width > 0 && rect.height > 0) {
-          stickyElements.push(el);
-        }
+      if (isRenderedFixed(el, style)) {
+        fixedElements.push(el);
+      } else if (isSticky(el, style)) {
+        stickyElements.push(el);
       }
     });
 
@@ -70,12 +93,13 @@ window.OmniCrawler = (function () {
     if (!elements || !Array.isArray(elements)) return;
     elements.forEach((el) => {
       if (!el || !el.style) return;
-      modifiedElements.push({
-        element: el,
-        type: "sticky",
-        originalPosition: el.style.position || "",
-        originalTop: el.style.top || ""
-      });
+      if (!originalStylesMap.has(el)) {
+        originalStylesMap.set(el, {
+          type: "sticky",
+          position: el.style.position || "",
+          top: el.style.top || ""
+        });
+      }
 
       el.style.setProperty("position", "static", "important");
       el.style.setProperty("top", "auto", "important");
@@ -85,55 +109,62 @@ window.OmniCrawler = (function () {
   /**
    * Hides all fixed elements (headers, subnavs, sidebars, floating widgets).
    * Called on slices > 0 because all fixed elements were already captured in slice 0.
+   * Employs display: none !important (removing out-of-flow subtree from rendering)
+   * with visibility: hidden and opacity: 0 fail-safes.
    */
   function hideFixedElements(elements) {
     if (!elements || !Array.isArray(elements)) return;
     elements.forEach((el) => {
       if (!el || !el.style) return;
-      // Don't re-add if already modified
-      if (modifiedElements.some((m) => m.element === el && m.type === "fixed")) return;
+      if (!originalStylesMap.has(el)) {
+        originalStylesMap.set(el, {
+          type: "fixed",
+          display: el.style.display || "",
+          visibility: el.style.visibility || "",
+          opacity: el.style.opacity || ""
+        });
+      }
 
-      modifiedElements.push({
-        element: el,
-        type: "fixed",
-        originalVisibility: el.style.visibility || "",
-        originalOpacity: el.style.opacity || ""
-      });
-
+      el.style.setProperty("display", "none", "important");
       el.style.setProperty("visibility", "hidden", "important");
       el.style.setProperty("opacity", "0", "important");
     });
   }
 
   function restoreElements() {
-    while (modifiedElements.length > 0) {
-      const item = modifiedElements.pop();
-      if (!item || !item.element || !item.element.style) continue;
+    for (const [el, orig] of originalStylesMap.entries()) {
+      if (!el || !el.style) continue;
 
-      if (item.type === "sticky") {
-        if (item.originalPosition) {
-          item.element.style.position = item.originalPosition;
+      if (orig.type === "sticky") {
+        if (orig.position) {
+          el.style.position = orig.position;
         } else {
-          item.element.style.removeProperty("position");
+          el.style.removeProperty("position");
         }
-        if (item.originalTop) {
-          item.element.style.top = item.originalTop;
+        if (orig.top) {
+          el.style.top = orig.top;
         } else {
-          item.element.style.removeProperty("top");
+          el.style.removeProperty("top");
         }
-      } else if (item.type === "fixed") {
-        if (item.originalVisibility) {
-          item.element.style.visibility = item.originalVisibility;
+      } else if (orig.type === "fixed") {
+        if (orig.display) {
+          el.style.display = orig.display;
         } else {
-          item.element.style.removeProperty("visibility");
+          el.style.removeProperty("display");
         }
-        if (item.originalOpacity) {
-          item.element.style.opacity = item.originalOpacity;
+        if (orig.visibility) {
+          el.style.visibility = orig.visibility;
         } else {
-          item.element.style.removeProperty("opacity");
+          el.style.removeProperty("visibility");
+        }
+        if (orig.opacity) {
+          el.style.opacity = orig.opacity;
+        } else {
+          el.style.removeProperty("opacity");
         }
       }
     }
+    originalStylesMap.clear();
   }
 
   return {

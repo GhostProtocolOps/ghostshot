@@ -156,12 +156,14 @@ async function executeFullPageCapture(options) {
       await new Promise((r) => setTimeout(r, 60));
     }
 
-    // After slice 0, hide all fixed elements (headers, sidebars, subnavs)
-    // to prevent duplicate repeating bars across the document
-    if (sliceIndex > 0 && fixedElements.length > 0) {
-      crawler.hideFixedElements(fixedElements);
-      // Brief tick for style recalibration
-      await new Promise((r) => setTimeout(r, 20));
+    // After slice 0, dynamically re-discover and hide all fixed elements
+    // (zero-height containers, sidebars, subnavs, and scroll-injected headers)
+    // to guarantee 100% visual parity with GoFullPage and 0 repeating bars.
+    if (sliceIndex > 0) {
+      const { fixedElements: currentFixed } = crawler.findFixedAndStickyElements();
+      crawler.hideFixedElements(currentFixed);
+      // Brief tick for DOM & style recalibration
+      await new Promise((r) => setTimeout(r, 25));
     }
 
     // Capture visible tab slice via background service worker
