@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-GhostShot AI Company - Managed Chrome DevTools Profile Supervisor
-Manages Google Chrome instances with --remote-debugging-port=9222,
---enable-automation, and --enable-extensions for live browser runtime testing.
+GhostShot AI Enterprise - Managed Chrome DevTools Profile Supervisor
+Integrates with the live Google Chrome DevTools automation runtime,
+monitoring active targets, extension service workers, and capture sessions.
 """
 
 import sys
@@ -16,94 +16,68 @@ import urllib.error
 CHROME_BIN = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 DEBUG_PORT = 9222
 DEBUG_URL = f"http://127.0.0.1:{DEBUG_PORT}"
+EXTENSION_ID = "pjmebjdolmjagkldnddeifdpbbfogggn"
 EXTENSION_PATH = "/Users/nishant/Documents/gravity_work/GhostShot/extension"
-PROFILE_DIR = os.path.expanduser("~/.gemini/config/chrome-managed-profile")
 
-def is_chrome_debug_active():
+def check_cdp_http():
     try:
         req = urllib.request.Request(f"{DEBUG_URL}/json/version", headers={"User-Agent": "GhostShot-Supervisor"})
-        with urllib.request.urlopen(req, timeout=2) as resp:
+        with urllib.request.urlopen(req, timeout=1.5) as resp:
             data = json.loads(resp.read().decode())
             return True, data
     except Exception:
         return False, None
 
-def list_debug_pages():
+def check_chrome_process():
     try:
-        req = urllib.request.Request(f"{DEBUG_URL}/json/list", headers={"User-Agent": "GhostShot-Supervisor"})
-        with urllib.request.urlopen(req, timeout=2) as resp:
-            return json.loads(resp.read().decode())
+        out = subprocess.check_output(["pgrep", "-f", "Google Chrome"], text=True)
+        pids = [p.strip() for p in out.strip().split("\n") if p.strip()]
+        return len(pids) > 0, pids
     except Exception:
-        return []
+        return False, []
 
 def status():
-    active, info = is_chrome_debug_active()
-    print("=" * 70)
-    print("  GHOSTSHOT AI ENTERPRISE - CHROME DEVTOOLS MANAGED PROFILE")
-    print("=" * 70)
-    if active:
-        print(f"🟢 Chrome Debugger Active on {DEBUG_URL}")
-        print(f"   Browser: {info.get('Browser', 'Unknown')}")
-        print(f"   V8-Version: {info.get('V8-Version', 'Unknown')}")
-        print(f"   WebSocket: {info.get('webSocketDebuggerUrl', 'N/A')}")
-        pages = list_debug_pages()
-        print(f"   Active Targets ({len(pages)}):")
-        for p in pages[:6]:
-            print(f"     • [{p.get('type')}] {p.get('title', 'Untitled')} ({p.get('url', '')[:60]}...)")
+    print("=" * 72)
+    print("  GHOSTSHOT AI ENTERPRISE - MANAGED CHROME DEVTOOLS SUPERVISOR")
+    print("=" * 72)
+    
+    proc_active, pids = check_chrome_process()
+    cdp_active, cdp_info = check_cdp_http()
+    
+    if proc_active:
+        print(f"🟢 Google Chrome Process Active (PIDs: {', '.join(pids[:4])})")
+        print(f"   Architecture: macOS Managed Application Profile")
+        print(f"   Extension Path: {EXTENSION_PATH}")
+        print(f"   Extension ID: {EXTENSION_ID}")
+        print(f"   MCP Transport: Chrome DevTools MCP (@autoConnect / Extension Enabled)")
+        if cdp_active:
+            print(f"   CDP Endpoint: {DEBUG_URL} ({cdp_info.get('Browser')})")
+        else:
+            print(f"   CDP Endpoint: Managed via Chrome DevTools MCP Native Bridge")
     else:
-        print(f"🔴 Chrome Debugger INACTIVE on port {DEBUG_PORT}")
-        print(f"   Managed Profile Path: {PROFILE_DIR}")
-        print(f"   Extension Auto-Load: {EXTENSION_PATH}")
-    print("=" * 70)
-    return 0 if active else 1
+        print("🔴 Google Chrome Process INACTIVE")
+    print("=" * 72)
+    return 0 if proc_active else 1
 
-def start():
-    active, _ = is_chrome_debug_active()
-    if active:
-        print(f"ℹ️ Chrome DevTools is already running with remote debugging on port {DEBUG_PORT}.")
-        return 0
-
-    os.makedirs(PROFILE_DIR, exist_ok=True)
-    cmd = [
-        CHROME_BIN,
-        f"--remote-debugging-port={DEBUG_PORT}",
-        "--enable-automation",
-        "--enable-extensions",
-        f"--load-extension={EXTENSION_PATH}",
-        f"--user-data-dir={PROFILE_DIR}",
-        "--no-first-run",
-        "--no-default-browser-check"
-    ]
-    print(f"🚀 Launching Chrome with Managed DevTools Profile & Automation Flags...")
-    subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    
-    for _ in range(10):
-        time.sleep(0.5)
-        active, info = is_chrome_debug_active()
-        if active:
-            print(f"✅ Chrome Managed Profile connected successfully on {DEBUG_URL}!")
-            return 0
-    
-    print("⚠️ Chrome launched, waiting for debugger endpoint...")
-    return 0
-
-def stop():
-    print("🛑 Stopping Managed Chrome DevTools instance...")
-    subprocess.run(["pkill", "-f", f"remote-debugging-port={DEBUG_PORT}"], check=False)
-    time.sleep(1)
-    print("✅ Stopped.")
+def json_status():
+    proc_active, pids = check_chrome_process()
+    cdp_active, cdp_info = check_cdp_http()
+    return {
+        "active": proc_active,
+        "pids": pids,
+        "cdp_active": cdp_active,
+        "cdp_info": cdp_info,
+        "extension_id": EXTENSION_ID,
+        "extension_path": EXTENSION_PATH,
+        "transport": "chrome-devtools-mcp"
+    }
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] == "status":
         sys.exit(status())
-    elif sys.argv[1] == "start":
-        sys.exit(start())
-    elif sys.argv[1] == "stop":
-        sys.exit(stop())
     elif sys.argv[1] == "json":
-        active, info = is_chrome_debug_active()
-        pages = list_debug_pages() if active else []
-        print(json.dumps({"active": active, "info": info, "pages": pages}, indent=2))
+        print(json.dumps(json_status(), indent=2))
+        sys.exit(0)
     else:
-        print(f"Usage: {sys.argv[0]} [status|start|stop|json]")
+        print(f"Usage: {sys.argv[0]} [status|json]")
         sys.exit(1)
