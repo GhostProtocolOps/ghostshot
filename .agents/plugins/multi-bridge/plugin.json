@@ -1,0 +1,4 @@
+{
+  "name": "multi-bridge",
+  "description": "Unified Multi-Model Bridge exposing official DeepSeek V3/R1 and APInex models (Qwen 3.8 Max, GPT-6 Luna, Gemini 4, Kimi K3) via MCP."
+}

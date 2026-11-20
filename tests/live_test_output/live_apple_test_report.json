@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "target": "https://www.apple.com/shop/buy-mac/macbook-pro-proled-xdr",
+  "dimensions": {
+    "window": "1200x800",
+    "full_page": "1200x11390",
+    "retina_physical": "2400x22780 (54.67 MP)"
+  },
+  "slices_count": 15,
+  "canvas_tiles_count": 2,
+  "continuous_long_pdf": {
+    "page_count": 1,
+    "dimensions_pt": "900 x 8542",
+    "dimensions_inches": "12.5 x 118.6 in"
+  },
+  "multi_page_a4_split": {
+    "page_count": 7
+  },
+  "sticky_elements_suppressed": 2
+}

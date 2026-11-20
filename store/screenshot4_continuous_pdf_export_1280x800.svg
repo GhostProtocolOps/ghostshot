@@ -1,0 +1,92 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bgGrad)"/>
+  <circle cx="640" cy="400" r="300" fill="#06B6D4" opacity="0.12" filter="url(#glow)"/>
+
+  <!-- Marketing Header -->
+  <text x="640" y="65" font-family="-apple-system, Roboto, sans-serif" font-size="32" font-weight="800" fill="url(#textGrad)" text-anchor="middle">Single Continuous Long Page PDF or Smart A4 Split</text>
+  <text x="640" y="98" font-family="-apple-system, Roboto, sans-serif" font-size="15" fill="#38BDF8" text-anchor="middle">Preserves full screenshot height on 1 single seamless page without forced splitting</text>
+
+  <!-- Comparison Container -->
+  <g transform="translate(140, 140)">
+    <!-- Mode A: Continuous 1-Page (Recommended) -->
+    <g transform="translate(0, 0)" filter="url(#shadow)">
+      <rect width="460" height="580" rx="14" fill="#111827" stroke="#4F46E5" stroke-width="2"/>
+      <!-- Header Badge -->
+      <rect x="24" y="24" width="220" height="30" rx="15" fill="rgba(79, 70, 229, 0.2)" stroke="#4F46E5"/>
+      <text x="134" y="44" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#C7D2FE" text-anchor="middle">⭐ 1 CONTINUOUS LONG PAGE</text>
+
+      <text x="24" y="85" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Full Image Sheet (No Split)</text>
+      <text x="24" y="110" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Exports whole page (up to 50,000px) as 1 endless page.</text>
+
+      <!-- Graphic representation: Long unbroken page -->
+      <g transform="translate(160, 140)" filter="url(#shadow)">
+        <rect width="140" height="380" rx="4" fill="#FFFFFF"/>
+        <rect x="15" y="15" width="60" height="8" rx="2" fill="#0F172A"/>
+        <rect x="15" y="30" width="110" height="4" rx="1" fill="#94A3B8"/>
+        <rect x="15" y="40" width="90" height="4" rx="1" fill="#CBD5E1"/>
+        <rect x="15" y="60" width="110" height="120" rx="3" fill="#F1F5F9"/>
+        <rect x="15" y="195" width="110" height="60" rx="3" fill="#0F172A"/>
+        <rect x="15" y="270" width="110" height="90" rx="3" fill="#E2E8F0"/>
+      </g>
+    </g>
+
+    <!-- Mode B: Smart A4 Split -->
+    <g transform="translate(540, 0)" filter="url(#shadow)">
+      <rect width="460" height="580" rx="14" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+      <!-- Header Badge -->
+      <rect x="24" y="24" width="180" height="30" rx="15" fill="#1F2937" stroke="#374151"/>
+      <text x="114" y="44" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#94A3B8" text-anchor="middle">📄 SMART A4 / LETTER SPLIT</text>
+
+      <text x="24" y="85" font-family="-apple-system, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">Whitespace Scanline Guard</text>
+      <text x="24" y="110" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Never cuts text lines or paragraphs in half across pages.</text>
+
+      <!-- Graphic representation: Stack of A4 pages -->
+      <g transform="translate(130, 150)" filter="url(#shadow)">
+        <!-- Page 1 -->
+        <rect x="0" y="0" width="180" height="160" rx="4" fill="#FFFFFF"/>
+        <text x="90" y="90" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#64748B" text-anchor="middle">Page 1</text>
+        <!-- Clean Cut Indicator -->
+        <line x1="0" y1="180" x2="200" y2="180" stroke="#10B981" stroke-width="2" stroke-dasharray="4"/>
+        <!-- Page 2 -->
+        <rect x="0" y="200" width="180" height="160" rx="4" fill="#FFFFFF"/>
+        <text x="90" y="290" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#64748B" text-anchor="middle">Page 2</text>
+      </g>
+    </g>
+  </g>
+</svg>

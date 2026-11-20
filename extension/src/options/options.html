@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniSnap - Settings & Heuristics</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <img src="../../icons/icon48.png" width="44" height="44" class="logo-img" alt="OmniSnap">
+      <div>
+        <h1>OmniSnap Settings</h1>
+        <p>Advanced capture heuristics, long screenshot pagination, and export configurations</p>
+      </div>
+    </header>
+
+    <!-- PDF Export Settings (The user's key feature!) -->
+    <div class="card highlight-card">
+      <div class="card-header-row">
+        <h2>📄 PDF Export & Long Screenshot Pagination</h2>
+        <span class="badge-free">All Pro Features Free & Unlocked</span>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Paper size / PDF Mode</div>
+          <div class="setting-desc">Specify how tall screenshots are formatted when exporting to PDF. "1 Continuous Long
+            Page" saves the entire screenshot on a single seamless page without splitting.</div>
+        </div>
+        <select id="setting-pdf-format" class="dropdown highlight-dropdown">
+          <option value="full" selected>1 Continuous Long Page (No Split - Full Image)</option>
+          <option value="a4">A4 Portrait (Split into standard pages)</option>
+          <option value="letter">US Letter Portrait (Split into pages)</option>
+          <option value="legal">US Legal Portrait (Split into pages)</option>
+          <option value="a4-landscape">A4 Landscape (Split into pages)</option>
+          <option value="letter-landscape">US Letter Landscape (Split into pages)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Smart Page Splitting</div>
+          <div class="setting-desc">Scans whitespace gaps between paragraphs to avoid cutting lines of text in half
+            across page breaks (when multi-page format is selected).</div>
+        </div>
+        <input type="checkbox" id="setting-pdf-smart-page" class="toggle-checkbox" checked>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Preserve Active Hyperlinks in PDF</div>
+          <div class="setting-desc">Converts all DOM links and anchors into clickable PDF annotation links that open in
+            your browser.</div>
+        </div>
+        <input type="checkbox" id="setting-pdf-insert-links" class="toggle-checkbox" checked>
+      </div>
+    </div>
+
+    <!-- Image Capture & Quality -->
+    <div class="card">
+      <h2>🖼️ Image Capture & Formatting</h2>
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Default Image Format</div>
+          <div class="setting-desc">PNG is pixel-perfect and lossless. JPG applies 92% DCT compression for smaller file
+            sizes.</div>
+        </div>
+        <select id="setting-fmt" class="dropdown">
+          <option value="png" selected>PNG (Lossless, High Quality)</option>
+          <option value="jpg">JPG (Compressed, Smaller Size)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Scroll Delay between slices</div>
+          <div class="setting-desc">Paces scroll advancement to allow heavy single-page apps (Twitter, Notion, Linear,
+            Apple Store) to populate lazy content.</div>
+        </div>
+        <select id="setting-delay" class="dropdown">
+          <option value="20">Fast (20ms)</option>
+          <option value="60" selected>Balanced (60ms) - Recommended</option>
+          <option value="150">Thorough (150ms)</option>
+          <option value="300">Heavy SPA / Infinite Scroll (300ms)</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Sticky & Repeating Elements Suppression</div>
+          <div class="setting-desc">Detects fixed and sticky headers, banners, and floating bars and hides them after
+            the first slice so they do not duplicate down the screenshot.</div>
+        </div>
+        <input type="checkbox" id="setting-sticky-suppress" class="toggle-checkbox" checked>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Recursive Shadow DOM Traversal</div>
+          <div class="setting-desc">Recursively walks into web components and open shadow roots to locate sticky
+            elements and complex media.</div>
+        </div>
+        <input type="checkbox" id="setting-shadow-dom" class="toggle-checkbox" checked>
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Fit Copies to Google Docs Limit</div>
+          <div class="setting-desc">Automatically scales clipboard copy images down if they exceed Google Docs
+            25,000,000 pixel paste limit.</div>
+        </div>
+        <input type="checkbox" id="setting-fit-copies" class="toggle-checkbox" checked>
+      </div>
+    </div>
+
+    <!-- Downloads & Filename -->
+    <div class="card">
+      <h2>💾 Downloads & File Naming</h2>
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Custom Filename Pattern</div>
+          <div class="setting-desc">Customize screenshot filenames using tokens: <code>{url}</code>,
+            <code>{title}</code>, <code>{date:yyyy-MM-dd}</code>, <code>{time}</code>
+          </div>
+        </div>
+        <input type="text" id="setting-filename-template" class="text-input"
+          value="omnisnap-{title}-{date:yyyy-MM-dd-HH_mm_ss}">
+      </div>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Always Show "Save As" Dialog</div>
+          <div class="setting-desc">Prompts you to select download folder and file name for every capture.</div>
+        </div>
+        <input type="checkbox" id="setting-save-as" class="toggle-checkbox">
+      </div>
+    </div>
+
+    <!-- Privacy & Local Processing Guarantee -->
+    <div class="card">
+      <h2 style="color: #10B981;">🛡️ 100% Privacy & Local Guarantee</h2>
+      <p class="privacy-text">
+        OmniSnap is strictly on-device software. Every stitch, PDF generation, annotation, and memory partition runs
+        entirely inside your browser sandbox. No telemetry, no Google Analytics tracking, no server calls.
+      </p>
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Local Capture Cache</div>
+          <div class="setting-desc" id="cache-status">Temporary slice cache: ~0 MB</div>
+        </div>
+        <button id="btn-clear-cache" class="danger-btn">Clear Local Cache</button>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcuts -->
+    <div class="card">
+      <h2>⌨️ Global Keyboard Shortcuts</h2>
+      <div class="setting-row">
+        <div>Capture Full Page</div>
+        <span class="key-pill">⌥⇧P / Alt+Shift+P</span>
+      </div>
+      <div class="setting-row">
+        <div>Capture Selected Area</div>
+        <span class="key-pill">⌥⇧S / Alt+Shift+S</span>
+      </div>
+      <div class="setting-row">
+        <div>Capture Visible Viewport</div>
+        <span class="key-pill">⌥⇧V / Alt+Shift+V</span>
+      </div>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+
+</html>

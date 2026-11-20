@@ -1,0 +1,88 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bgGrad)"/>
+  <circle cx="640" cy="400" r="350" fill="#4F46E5" opacity="0.12" filter="url(#glow)"/>
+
+  <!-- Marketing Header -->
+  <text x="640" y="80" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">Instant Capture Modes for Any Workflow</text>
+  <text x="640" y="115" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="500" fill="#94A3B8" text-anchor="middle">Capture entire web pages, visible viewports, custom selections, or scrolling elements with 1 click</text>
+
+  <!-- Center Popup Window -->
+  <g transform="translate(460, 160)" filter="url(#shadow)">
+    <rect width="360" height="520" rx="16" fill="#111827" stroke="#374151" stroke-width="2"/>
+    
+    <!-- Popup Header -->
+    <rect width="360" height="60" rx="16" fill="#1F2937"/>
+    <circle cx="36" cy="30" r="14" fill="url(#primaryGrad)"/>
+    <text x="62" y="36" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">OmniSnap</text>
+
+    <!-- Capture Mode 1 (Active) -->
+    <g transform="translate(20, 80)">
+      <rect width="320" height="80" rx="12" fill="linear-gradient(135deg, rgba(79, 70, 229, 0.25), rgba(6, 182, 212, 0.15))" stroke="#4F46E5" stroke-width="2"/>
+      <circle cx="40" cy="40" r="18" fill="#4F46E5"/>
+      <text x="40" y="45" font-family="-apple-system, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">📄</text>
+      <text x="75" y="34" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">Capture Entire Page</text>
+      <text x="75" y="55" font-family="-apple-system, sans-serif" font-size="11" fill="#94A3B8">Scrolls & stitches full length (⌥⇧P)</text>
+    </g>
+
+    <!-- Mode 2 -->
+    <g transform="translate(20, 175)">
+      <rect width="320" height="75" rx="12" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+      <circle cx="40" cy="37" r="16" fill="#374151"/>
+      <text x="40" y="42" font-family="-apple-system, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle">✂️</text>
+      <text x="75" y="32" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Selected Region</text>
+      <text x="75" y="51" font-family="-apple-system, sans-serif" font-size="11" fill="#94A3B8">Draw area on screen (⌥⇧S)</text>
+    </g>
+
+    <!-- Mode 3 -->
+    <g transform="translate(20, 265)">
+      <rect width="320" height="75" rx="12" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+      <circle cx="40" cy="37" r="16" fill="#374151"/>
+      <text x="40" y="42" font-family="-apple-system, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle">🖥️</text>
+      <text x="75" y="32" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Visible Viewport</text>
+      <text x="75" y="51" font-family="-apple-system, sans-serif" font-size="11" fill="#94A3B8">Current screen area (⌥⇧V)</text>
+    </g>
+
+    <!-- Footer Controls -->
+    <g transform="translate(20, 460)">
+      <text x="10" y="24" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#94A3B8">Settings & Heuristics</text>
+      <rect x="230" y="6" width="80" height="26" rx="6" fill="#374151"/>
+      <text x="270" y="23" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF" text-anchor="middle">Options ⚙️</text>
+    </g>
+  </g>
+</svg>

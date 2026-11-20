@@ -1,0 +1,96 @@
+<svg width="1280" height="800" viewBox="0 0 1280 800" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bgGrad)"/>
+
+  <!-- Top Marketing Heading -->
+  <text x="640" y="65" font-family="-apple-system, Roboto, sans-serif" font-size="32" font-weight="800" fill="url(#textGrad)" text-anchor="middle">Ultra-Long Screenshot Review with Minimap Radar</text>
+  <text x="640" y="98" font-family="-apple-system, Roboto, sans-serif" font-size="15" fill="#06B6D4" text-anchor="middle">Stitches 15,000+ px pages without browser memory limits. 1-Click Copy, Download PNG, or PDF.</text>
+
+  <!-- Viewer Window Mockup -->
+  <g transform="translate(100, 130)" filter="url(#shadow)">
+    <rect width="1080" height="610" rx="12" fill="#0B0F19" stroke="#374151" stroke-width="1.5"/>
+
+    <!-- Viewer Topbar -->
+    <rect width="1080" height="56" rx="12" fill="#111827"/>
+    <g transform="translate(20, 14)">
+      <rect width="28" height="28" rx="6" fill="url(#primaryGrad)"/>
+      <text x="38" y="16" font-family="-apple-system, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">MacBook Pro with Liquid Retina XDR - Apple</text>
+      <text x="38" y="27" font-family="-apple-system, sans-serif" font-size="10" fill="#94A3B8">1200 × 11,390 px • apple.com/shop/buy-mac</text>
+    </g>
+
+    <!-- Topbar Actions -->
+    <g transform="translate(680, 12)">
+      <!-- Studio Btn -->
+      <rect x="0" y="0" width="115" height="32" rx="8" fill="url(#primaryGrad)"/>
+      <text x="57" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">Edit in Studio</text>
+      
+      <!-- Copy Btn -->
+      <rect x="125" y="0" width="105" height="32" rx="8" fill="#10B981"/>
+      <text x="177" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">Copy Image</text>
+
+      <!-- PDF Btn Combo -->
+      <g transform="translate(240, 0)">
+        <rect width="145" height="32" rx="8" fill="#1E1B4B" stroke="#4F46E5" stroke-width="1.5"/>
+        <text x="72" y="20" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="#C7D2FE" text-anchor="middle">Download PDF ▾</text>
+      </g>
+    </g>
+
+    <!-- Main Viewport with Apple Long Page Preview -->
+    <rect x="420" y="70" width="240" height="520" fill="#FFFFFF" filter="url(#shadow)"/>
+    <rect x="435" y="90" width="120" height="12" rx="2" fill="#0F172A"/>
+    <rect x="435" y="110" width="210" height="6" rx="2" fill="#94A3B8"/>
+    <rect x="435" y="130" width="210" height="180" rx="4" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <circle cx="540" cy="220" r="40" fill="#3B82F6" opacity="0.3"/>
+    <rect x="435" y="330" width="210" height="60" rx="4" fill="#0F172A"/>
+    <rect x="435" y="410" width="210" height="160" rx="4" fill="#F1F5F9"/>
+
+    <!-- Minimap Radar Panel (Bottom-Right) -->
+    <g transform="translate(940, 420)">
+      <rect width="110" height="170" rx="10" fill="rgba(17, 24, 39, 0.95)" stroke="#374151" stroke-width="1.5"/>
+      <rect x="10" y="10" width="90" height="150" rx="4" fill="#000000"/>
+      <!-- Lens -->
+      <rect x="10" y="30" width="90" height="34" rx="3" fill="rgba(6, 182, 212, 0.2)" stroke="#06B6D4" stroke-width="2"/>
+    </g>
+
+    <!-- Floating Zoom Bar (Bottom-Center) -->
+    <g transform="translate(440, 550)">
+      <rect width="200" height="36" rx="18" fill="rgba(17, 24, 39, 0.95)" stroke="#374151" stroke-width="1.5"/>
+      <text x="100" y="22" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">-   Fit (100%)   +</text>
+    </g>
+  </g>
+</svg>

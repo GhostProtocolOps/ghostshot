@@ -1,0 +1,75 @@
+<svg width="920" height="680" viewBox="0 0 920 680" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <rect width="920" height="680" fill="url(#bgGrad)"/>
+  <circle cx="460" cy="220" r="260" fill="#4F46E5" opacity="0.16" filter="url(#glow)"/>
+
+  <g transform="translate(415, 60)" filter="url(#shadow)">
+    <rect width="90" height="90" rx="24" fill="url(#primaryGrad)"/>
+    <path d="M30 40h30M30 48h22M30 56h30M45 30v30" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <text x="460" y="195" font-family="-apple-system, Roboto, sans-serif" font-size="34" font-weight="800" fill="url(#textGrad)" text-anchor="middle">OmniSnap</text>
+  <text x="460" y="228" font-family="-apple-system, Roboto, sans-serif" font-size="16" font-weight="600" fill="#06B6D4" text-anchor="middle">Next-Generation Full-Page Capture & Studio</text>
+
+  <!-- Feature Grid -->
+  <g transform="translate(70, 280)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="240" height="180" rx="12" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+    <text x="24" y="44" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">📄 Long Continuous PDF</text>
+    <text x="24" y="75" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Exports entire 10,000+ px pages onto 1 seamless PDF sheet with zero splitting.</text>
+    <text x="24" y="150" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#10B981">✓ Included Free</text>
+
+    <!-- Card 2 -->
+    <rect x="270" y="0" width="240" height="180" rx="12" fill="#111827" stroke="#4F46E5" stroke-width="1.5"/>
+    <text x="294" y="44" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">🎨 100% Free Studio</text>
+    <text x="294" y="75" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Crop, Badges (1-2-3), Privacy Blur, Text, Shapes, and Mockups. No subscription.</text>
+    <text x="294" y="150" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#38BDF8">✓ Unlocked</text>
+
+    <!-- Card 3 -->
+    <rect x="540" y="0" width="240" height="180" rx="12" fill="#111827" stroke="#374151" stroke-width="1.5"/>
+    <text x="564" y="44" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">🛡️ Zero Telemetry</text>
+    <text x="564" y="75" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">100% on-device processing. No Google Analytics tracking or external calls.</text>
+    <text x="564" y="150" font-family="-apple-system, sans-serif" font-size="12" font-weight="700" fill="#F59E0B">✓ 100% Local</text>
+  </g>
+
+  <!-- Bottom CTA bar -->
+  <g transform="translate(235, 520)">
+    <rect width="450" height="54" rx="27" fill="url(#primaryGrad)" filter="url(#shadow)"/>
+    <text x="225" y="33" font-family="-apple-system, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">Chrome • Edge • Brave • Firefox • Safari</text>
+  </g>
+</svg>

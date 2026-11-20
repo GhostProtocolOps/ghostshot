@@ -1,0 +1,16 @@
+[package]
+name = "omnisnap-core"
+version = "0.1.0"
+edition = "2021"
+authors = ["OmniSnap Core Team"]
+description = "High-performance coordinate stitching, tile calculation, and link annotation engine for OmniSnap"
+
+[dependencies]
+
+[[bin]]
+name = "omnisnap-cli"
+path = "src/main.rs"
+
+[lib]
+name = "omnisnap_core"
+path = "src/lib.rs"

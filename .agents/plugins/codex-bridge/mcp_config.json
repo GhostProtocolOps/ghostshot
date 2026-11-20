@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "codex-bridge": {
+      "command": "/Library/Developer/CommandLineTools/usr/bin/python3",
+      "args": [
+        "/Users/nishant/Documents/gravity_work/gravity_1/.agents/plugins/codex-bridge/codex_mcp.py"
+      ],
+      "env": {
+        "PATH": "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+      }
+    }
+  }
+}

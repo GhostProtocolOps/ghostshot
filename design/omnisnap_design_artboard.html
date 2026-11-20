@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniSnap Pro — Master UI/UX Design Artboard (FigCraft)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background: #090D16;
+      color: #F8FAFC;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Top Toolbar */
+    header {
+      background: #111827;
+      border-bottom: 1px solid #1F2937;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo-img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+    }
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #9CA3AF;
+    }
+    .toolbar-nav {
+      display: flex;
+      gap: 8px;
+    }
+    .nav-btn {
+      background: #1F2937;
+      border: 1px solid #374151;
+      color: #E5E7EB;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .nav-btn:hover {
+      background: #374151;
+      color: #FFFFFF;
+    }
+    .nav-btn.active {
+      background: linear-gradient(135deg, #4F46E5, #06B6D4);
+      border-color: transparent;
+      color: #FFFFFF;
+    }
+
+    /* Main Canvas Artboard Container */
+    .artboard-container {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      max-width: 1560px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      border-left: 4px solid #4F46E5;
+      padding-left: 16px;
+    }
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .section-header p {
+      font-size: 13px;
+      color: #9CA3AF;
+    }
+
+    /* Brand & Logo Section */
+    .logo-showcase {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 32px;
+      background: #111827;
+      border: 1px solid #1F2937;
+      border-radius: 16px;
+      padding: 32px;
+      align-items: center;
+    }
+    .logo-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      background: #0B0F19;
+      border: 1px solid #1F2937;
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .logo-hero img {
+      width: 220px;
+      height: 220px;
+      filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.5));
+    }
+    .logo-hero span {
+      font-size: 12px;
+      color: #9CA3AF;
+      font-weight: 600;
+    }
+    .logo-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .anatomy-card {
+      background: #0B0F19;
+      border: 1px solid #1F2937;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    .anatomy-card h4 {
+      font-size: 13px;
+      font-weight: 600;
+      color: #06B6D4;
+      margin-bottom: 6px;
+    }
+    .anatomy-card p {
+      font-size: 12px;
+      color: #9CA3AF;
+      line-height: 1.5;
+    }
+    .sizes-strip {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: #6B7280;
+    }
+
+    /* Color Swatches Grid */
+    .tokens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .token-card {
+      background: #111827;
+      border: 1px solid #1F2937;
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .token-preview {
+      height: 48px;
+      border-radius: 6px;
+    }
+    .token-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .token-val {
+      font-size: 10px;
+      color: #9CA3AF;
+      font-family: monospace;
+    }
+
+    /* Screen Frames Layout */
+    .screens-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .screen-card {
+      background: #111827;
+      border: 1px solid #1F2937;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .screen-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .screen-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: #1F2937;
+      color: #06B6D4;
+    }
+    .screen-preview-frame {
+      background: #0B0F19;
+      border: 1px solid #1F2937;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .screen-preview-frame img, .screen-preview-frame svg {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    .full-width-screen {
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header>
+    <div class="brand-section">
+      <img src="../extension/icons/icon48.png" alt="Logo" class="brand-logo-img">
+      <div>
+        <div class="brand-title">OmniSnap Pro — Master Design Artboard</div>
+        <div class="brand-sub">Craft Suite FigCraft Project • v2.0 Production Specifications</div>
+      </div>
+    </div>
+    <div class="toolbar-nav">
+      <a href="#brand" class="nav-btn active">Logo &amp; Brand</a>
+      <a href="#tokens" class="nav-btn">Tokens</a>
+      <a href="#popup" class="nav-btn">Screen 1: Popup</a>
+      <a href="#hud" class="nav-btn">Screen 2: HUD</a>
+      <a href="#viewer" class="nav-btn">Screen 3: Post-Capture Viewer</a>
+      <a href="#studio" class="nav-btn">Screen 4: Studio Editor</a>
+      <a href="#export" class="nav-btn">Screen 5: Export</a>
+      <a href="#options" class="nav-btn">Screen 6: Options</a>
+    </div>
+  </header>
+
+  <div class="artboard-container">
+
+    <!-- 1. Brand Identity & Logo Architecture -->
+    <section id="brand" style="display:flex; flex-direction:column; gap:20px;">
+      <div class="section-header">
+        <h2>Brand Emblem &amp; Optical Geometry</h2>
+        <p>Craft Suite FigCraft vector design system, squircle chassis, and multi-resolution icon assets.</p>
+      </div>
+
+      <div class="logo-showcase">
+        <div class="logo-hero">
+          <img src="figcraft_rendered_logo.png" alt="OmniSnap Pro Logo">
+          <span>512 × 512 px Vector Master</span>
+        </div>
+
+        <div class="logo-details">
+          <div class="anatomy-card">
+            <h4>1. Squircle Chassis &amp; Electric Gradient</h4>
+            <p>Constructed with an Apple-style continuous curvature squircle using a vibrant brand gradient: Electric Indigo (<code>#4F46E5</code>) through Vivid Violet (<code>#7C3AED</code>) to Cyber Cyan (<code>#06B6D4</code>).</p>
+          </div>
+
+          <div class="anatomy-card">
+            <h4>2. Viewfinder Reticle Framing</h4>
+            <p>Four precision targeting brackets (<code>#E0F2FE</code>) evoke pixel-perfect screen sniping, region selection, and instant capture readiness.</p>
+          </div>
+
+          <div class="anatomy-card">
+            <h4>3. 6-Blade Aperture Iris &amp; Concentrated Core</h4>
+            <p>Six clockwise rotational shutter blades with directional light reflection, housing a concentrated cyan optical sensor and specular gleam spark.</p>
+          </div>
+
+          <!-- Multi-Resolution Strip -->
+          <div class="anatomy-card">
+            <h4>Multi-Resolution Icon Suite</h4>
+            <div class="sizes-strip">
+              <div class="size-item">
+                <img src="../extension/icons/icon128.png" width="48" height="48" alt="128px">
+                <span>128px</span>
+              </div>
+              <div class="size-item">
+                <img src="../extension/icons/icon48.png" width="36" height="36" alt="48px">
+                <span>48px</span>
+              </div>
+              <div class="size-item">
+                <img src="../extension/icons/icon32.png" width="28" height="28" alt="32px">
+                <span>32px</span>
+              </div>
+              <div class="size-item">
+                <img src="../extension/icons/icon16.png" width="16" height="16" alt="16px">
+                <span>16px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Design Tokens -->
+    <section id="tokens" style="display:flex; flex-direction:column; gap:20px;">
+      <div class="section-header">
+        <h2>Design Tokens &amp; Color System</h2>
+        <p>Curated high-contrast dark mode surface elevations and semantic accents.</p>
+      </div>
+
+      <div class="tokens-grid">
+        <div class="token-card">
+          <div class="token-preview" style="background:#4F46E5;"></div>
+          <div class="token-name">Brand Indigo</div>
+          <div class="token-val">#4F46E5</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#7C3AED;"></div>
+          <div class="token-name">Brand Violet</div>
+          <div class="token-val">#7C3AED</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#06B6D4;"></div>
+          <div class="token-name">Brand Cyan</div>
+          <div class="token-val">#06B6D4</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#0F172A;"></div>
+          <div class="token-name">Canvas Dark</div>
+          <div class="token-val">#0F172A</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#1E293B;"></div>
+          <div class="token-name">Surface Card</div>
+          <div class="token-val">#1E293B</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#10B981;"></div>
+          <div class="token-name">Success Emerald</div>
+          <div class="token-val">#10B981</div>
+        </div>
+        <div class="token-card">
+          <div class="token-preview" style="background:#EF4444;"></div>
+          <div class="token-name">Danger / Annotation</div>
+          <div class="token-val">#EF4444</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Screen 1 & Screen 2: Popup and In-Page HUD -->
+    <section id="popup" class="screens-grid">
+      <!-- Screen 1: Popup -->
+      <div class="screen-card">
+        <div class="screen-card-header">
+          <h3>Screen 1: Extension Action Popup</h3>
+          <span class="screen-badge">360 × 480 px</span>
+        </div>
+        <p style="font-size:12px; color:#9CA3AF;">Fast capture launcher with 4 distinct capture modes, delay countdown selector, and sticky header suppression toggle.</p>
+        <div class="screen-preview-frame">
+          <img src="screen1_popup.svg" alt="Screen 1: Popup UI">
+        </div>
+      </div>
+
+      <!-- Screen 2: In-Page HUD & Screen 4: Export Dialog -->
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <!-- Screen 2: HUD -->
+        <div class="screen-card" id="hud">
+          <div class="screen-card-header">
+            <h3>Screen 2: In-Page Capture Progress HUD</h3>
+            <span class="screen-badge">320 × 64 px Floating Capsule</span>
+          </div>
+          <p style="font-size:12px; color:#9CA3AF;">Non-intrusive floating glassmorphic ring displaying real-time slice capture percentage and instant Cancel button (<code>Esc</code>).</p>
+          <div class="screen-preview-frame">
+            <img src="screen2_hud.svg" alt="Screen 2: In-Page HUD">
+          </div>
+        </div>
+
+        <!-- Screen 4: Export Modal -->
+        <div class="screen-card" id="export">
+          <div class="screen-card-header">
+            <h3>Screen 4: Export &amp; Sharing Dialog</h3>
+            <span class="screen-badge">520 × 440 px Modal</span>
+          </div>
+          <p style="font-size:12px; color:#9CA3AF;">1-Click Copy to Clipboard, Lossless PNG 2x, JPG compression, WebP, and Smart Multi-page PDF with hyperlinks.</p>
+          <div class="screen-preview-frame">
+            <img src="screen4_export.svg" alt="Screen 4: Export Modal">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Screen 2.5: Dedicated Post-Capture Viewer & Review Hub -->
+    <section id="viewer" class="full-width-screen">
+      <div class="screen-card">
+        <div class="screen-card-header">
+          <div>
+            <h3>Screen 3: Post-Capture Reviewer &amp; Quick Action Hub</h3>
+            <p style="font-size:12px; color:#9CA3AF; margin-top:4px;">The primary page opened immediately after taking a screenshot. Provides instant high-res pan &amp; zoom, minimap locator, 1-click clipboard copy, and one-click jump to the Studio Editor.</p>
+          </div>
+          <span class="screen-badge">1200 × 800 px Post-Capture Hub</span>
+        </div>
+        <div class="screen-preview-frame">
+          <img src="screen6_capture_viewer.svg" alt="Post-Capture Viewer UI">
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Screen 3: Studio Screenshot Editor (Full Width Showcase) -->
+    <section id="studio" class="full-width-screen">
+      <div class="screen-card">
+        <div class="screen-card-header">
+          <div>
+            <h3>Screen 3: Studio Screenshot Editor &amp; Mockup Studio</h3>
+            <p style="font-size:12px; color:#9CA3AF; margin-top:4px;">100% Free professional annotation canvas with privacy redaction blur, numbered step badges (1, 2, 3), and presentation mockup frames.</p>
+          </div>
+          <span class="screen-badge">1200 × 800 px Workspace</span>
+        </div>
+        <div class="screen-preview-frame">
+          <img src="screen3_studio.svg" alt="Screen 3: Studio Editor UI">
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Screen 5: Options & Settings Dashboard -->
+    <section id="options" class="full-width-screen">
+      <div class="screen-card">
+        <div class="screen-card-header">
+          <div>
+            <h3>Screen 5: Options &amp; Preferences Dashboard</h3>
+            <p style="font-size:12px; color:#9CA3AF; margin-top:4px;">Configure scroll delay heuristics, Shadow DOM recursion, keyboard shortcut triggers, and zero-telemetry confirmation.</p>
+          </div>
+          <span class="screen-badge">800 × 600 px Settings</span>
+        </div>
+        <div class="screen-preview-frame">
+          <img src="screen5_options.svg" alt="Screen 5: Options Dashboard">
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>

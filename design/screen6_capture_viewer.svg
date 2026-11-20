@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <filter id="shadowLg" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Viewport Canvas Background -->
+  <rect width="1200" height="800" fill="#0B0F19"/>
+
+  <!-- Top Sticky Review Bar -->
+  <rect width="1200" height="60" fill="#111827" stroke="#1F2937" stroke-width="1"/>
+  
+  <g transform="translate(20, 15)">
+    <!-- Brand Logo -->
+    <rect width="30" height="30" rx="8" fill="url(#brand)"/>
+    <circle cx="15" cy="15" r="7" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="15" cy="15" r="3" fill="#FFFFFF"/>
+    
+    <text x="40" y="16" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="700">OmniSnap Capture Viewer</text>
+    <text x="40" y="28" fill="#9CA3AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11">github.com/developer/project • 3840 × 12400 px @ 2x Retina</text>
+  </g>
+
+  <!-- Top Right Action Buttons -->
+  <g transform="translate(680, 12)">
+    <!-- Edit in Studio Button (Primary Highlight) -->
+    <rect width="130" height="36" rx="8" fill="url(#brand)"/>
+    <path d="M16 22l2-6 10-10 4 4-10 10-6 2z" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="75" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="700" text-anchor="middle">Edit in Studio</text>
+
+    <!-- Copy Image -->
+    <g transform="translate(140, 0)">
+      <rect width="110" height="36" rx="8" fill="#10B981"/>
+      <path d="M14 18l3 3 7-7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <text x="64" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="600" text-anchor="middle">Copy Image</text>
+    </g>
+
+    <!-- Download PNG -->
+    <g transform="translate(260, 0)">
+      <rect width="120" height="36" rx="8" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+      <path d="M18 14v8m-4-4l4 4 4-4m-8 7h16" stroke="#38BDF8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <text x="70" y="22" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="600" text-anchor="middle">Download PNG</text>
+    </g>
+
+    <!-- Download PDF -->
+    <g transform="translate(390, 0)">
+      <rect width="110" height="36" rx="8" fill="#1F2937" stroke="#374151" stroke-width="1"/>
+      <path d="M16 12h12v14H16z" stroke="#F43F5E" stroke-width="1.6" fill="none"/>
+      <text x="65" y="22" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="600" text-anchor="middle">Smart PDF</text>
+    </g>
+  </g>
+
+  <!-- Centered Scrollable Document Viewer Canvas -->
+  <g transform="translate(320, 80)">
+    <!-- Document Page Shadow & Canvas -->
+    <rect width="560" height="690" rx="4" fill="#FFFFFF" filter="url(#shadowLg)"/>
+    
+    <!-- Rendered Webpage Content Preview -->
+    <rect x="30" y="40" width="300" height="24" rx="4" fill="#1F2937"/>
+    <rect x="30" y="80" width="480" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="100" width="440" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="120" width="400" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="150" width="500" height="220" rx="6" fill="#F3F4F6"/>
+    <circle cx="280" cy="260" r="30" fill="#E5E7EB"/>
+    <rect x="30" y="400" width="480" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="420" width="460" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="440" width="420" height="12" rx="3" fill="#E5E7EB"/>
+    <rect x="30" y="480" width="240" height="32" rx="6" fill="#4F46E5"/>
+  </g>
+
+  <!-- Floating Glass Zoom Capsule (Bottom-Center) -->
+  <g transform="translate(480, 720)">
+    <rect width="240" height="44" rx="22" fill="#111827EE" stroke="#374151" stroke-width="1.5" filter="url(#shadowLg)"/>
+    
+    <!-- Zoom Out Button -->
+    <rect x="10" y="8" width="28" height="28" rx="14" fill="#1F2937"/>
+    <line x1="18" y1="22" x2="30" y2="22" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Zoom Percentage Display -->
+    <text x="75" y="27" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="600" text-anchor="middle">Fit (45%)</text>
+    
+    <!-- Zoom In Button -->
+    <rect x="110" y="8" width="28" height="28" rx="14" fill="#1F2937"/>
+    <line x1="118" y1="22" x2="130" y2="22" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+    <line x1="124" y1="16" x2="124" y2="28" stroke="#F8FAFC" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- 100% Reset Pill -->
+    <rect x="150" y="8" width="44" height="28" rx="6" fill="#1F2937"/>
+    <text x="172" y="26" fill="#9CA3AF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11" font-weight="600" text-anchor="middle">100%</text>
+
+    <!-- Fullscreen / Expand -->
+    <rect x="200" y="8" width="28" height="28" rx="6" fill="#1F2937"/>
+    <path d="M206 14h5v5m11-5h-5v5m-11 11h5v-5m11 5h-5v-5" stroke="#9CA3AF" stroke-width="1.6" fill="none"/>
+  </g>
+
+  <!-- Minimap Navigator (Bottom Right Corner) -->
+  <g transform="translate(1080, 620)">
+    <rect width="90" height="150" rx="8" fill="#111827EE" stroke="#374151" stroke-width="1.5" filter="url(#shadowLg)"/>
+    <!-- Page Representation -->
+    <rect x="10" y="10" width="70" height="130" rx="2" fill="#1F2937"/>
+    <!-- Viewport Lens Window (Active Viewing Area) -->
+    <rect x="10" y="10" width="70" height="45" rx="2" fill="#06B6D433" stroke="#06B6D4" stroke-width="1.5"/>
+  </g>
+</svg>

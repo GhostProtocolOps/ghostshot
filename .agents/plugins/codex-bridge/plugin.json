@@ -1,0 +1,4 @@
+{
+  "name": "codex-bridge",
+  "description": "Bridge plugin to invoke the locally installed OpenAI Codex CLI (using your ChatGPT account) via MCP."
+}

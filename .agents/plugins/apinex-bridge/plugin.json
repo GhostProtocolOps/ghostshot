@@ -1,0 +1,4 @@
+{
+  "name": "apinex-bridge",
+  "description": "Bridge plugin to invoke APInex multi-model gateway (45 models with free-tier access) via MCP."
+}

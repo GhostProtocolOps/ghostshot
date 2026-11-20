@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "OmniSnap - Full Page Screen Capture & Studio",
+  "version": "2.0.0",
+  "description": "Next-generation full-page screen capture, scroll container snapshot, and annotation studio.",
+  "browser_action": {
+    "default_icon": "icons/icon48.png",
+    "default_popup": "src/popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "src/lib/webextension-polyfill.js",
+      "src/background/service_worker.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "unlimitedStorage",
+    "downloads",
+    "<all_urls>"
+  ],
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "omnisnap-pro@gravity.local",
+      "strict_min_version": "109.0"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

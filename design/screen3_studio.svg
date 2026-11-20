@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="mockupBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#312E81"/>
+      <stop offset="50%" stop-color="#4338CA"/>
+      <stop offset="100%" stop-color="#0E7490"/>
+    </linearGradient>
+    <filter id="shadowLg" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- App Canvas Background -->
+  <rect width="1200" height="800" fill="#0F172A"/>
+
+  <!-- Top App Navigation Bar -->
+  <rect width="1200" height="56" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <g transform="translate(20, 14)">
+    <!-- Logo Badge -->
+    <rect width="28" height="28" rx="6" fill="url(#brand)"/>
+    <circle cx="14" cy="14" r="6" fill="none" stroke="#FFFFFF" stroke-width="1.8"/>
+    <circle cx="14" cy="14" r="2.5" fill="#FFFFFF"/>
+    
+    <text x="38" y="19" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="14" font-weight="700">OmniSnap Studio</text>
+    <text x="175" y="19" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13">|</text>
+    <text x="195" y="19" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12">github.com/developer/project • 3840 x 11200 px @ 2x</text>
+  </g>
+
+  <!-- Center Tool Palette -->
+  <g transform="translate(480, 10)">
+    <rect width="320" height="36" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+    <!-- Tools -->
+    <rect x="4" y="4" width="28" height="28" rx="6" fill="#334155"/>
+    <!-- Cursor -->
+    <path d="M12 9l8 8-4 1-2 5-2-1 2-5-4-1z" fill="#F8FAFC"/>
+    
+    <!-- Crop -->
+    <g transform="translate(36, 4)">
+      <rect width="28" height="28" rx="6" fill="none"/>
+      <path d="M9 13v-4h4m6 0h4v4m0 6v4h-4m-6 0h-4v-4" stroke="#94A3B8" stroke-width="1.6" fill="none"/>
+    </g>
+
+    <!-- Arrow (Active) -->
+    <g transform="translate(68, 4)">
+      <rect width="28" height="28" rx="6" fill="url(#brand)"/>
+      <path d="M8 20L20 8m0 0h-7m7 0v7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Shapes -->
+    <g transform="translate(100, 4)">
+      <rect x="7" y="7" width="14" height="14" rx="2" stroke="#94A3B8" stroke-width="1.6" fill="none"/>
+    </g>
+
+    <!-- Text -->
+    <g transform="translate(132, 4)">
+      <text x="14" y="19" fill="#94A3B8" font-family="serif" font-size="15" font-weight="700" text-anchor="middle">T</text>
+    </g>
+
+    <!-- Number Step Badge (1) -->
+    <g transform="translate(164, 4)">
+      <circle cx="14" cy="14" r="8" fill="#EF4444"/>
+      <text x="14" y="18" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="10" font-weight="700" text-anchor="middle">1</text>
+    </g>
+
+    <!-- Blur / Privacy Redactor -->
+    <g transform="translate(196, 4)">
+      <rect x="7" y="7" width="14" height="14" rx="2" stroke="#06B6D4" stroke-width="1.6" stroke-dasharray="2 2" fill="none"/>
+      <text x="14" y="18" fill="#06B6D4" font-size="8" text-anchor="middle">BLUR</text>
+    </g>
+
+    <!-- Mockup Studio Frame -->
+    <g transform="translate(228, 4)">
+      <rect x="6" y="8" width="16" height="12" rx="2" stroke="#A855F7" stroke-width="1.6" fill="none"/>
+      <circle cx="9" cy="11" r="1" fill="#A855F7"/>
+    </g>
+  </g>
+
+  <!-- Right Actions -->
+  <g transform="translate(940, 10)">
+    <!-- Copy to Clipboard -->
+    <rect width="130" height="36" rx="8" fill="#10B981" stroke="#059669" stroke-width="1"/>
+    <path d="M16 18l4 4 8-8" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <text x="75" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="600" text-anchor="middle">Copy Image</text>
+
+    <!-- Export Button -->
+    <rect x="140" width="100" height="36" rx="8" fill="url(#brand)"/>
+    <text x="190" y="22" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="12" font-weight="700" text-anchor="middle">Export ▾</text>
+  </g>
+
+  <!-- Left Properties Toolbar -->
+  <g transform="translate(20, 80)">
+    <rect width="54" height="420" rx="12" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+    
+    <!-- Color Swatches -->
+    <g transform="translate(15, 20)">
+      <circle cx="12" cy="12" r="10" fill="#EF4444" stroke="#FFFFFF" stroke-width="2"/>
+      <circle cx="12" cy="42" r="10" fill="#F59E0B"/>
+      <circle cx="12" cy="72" r="10" fill="#10B981"/>
+      <circle cx="12" cy="102" r="10" fill="#06B6D4"/>
+      <circle cx="12" cy="132" r="10" fill="#6366F1"/>
+      <circle cx="12" cy="162" r="10" fill="#EC4899"/>
+      <circle cx="12" cy="192" r="10" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Stroke Width Indicators -->
+    <g transform="translate(15, 250)">
+      <line x1="2" y1="10" x2="22" y2="10" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+      <line x1="2" y1="30" x2="22" y2="30" stroke="#F8FAFC" stroke-width="4" stroke-linecap="round"/>
+      <line x1="2" y1="55" x2="22" y2="55" stroke="#94A3B8" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Canvas Workspace with Mockup Frame Presentation -->
+  <g transform="translate(100, 80)">
+    <!-- Mockup Gradient Wrapper -->
+    <rect width="1070" height="690" rx="16" fill="url(#mockupBg)" filter="url(#shadowLg)"/>
+
+    <!-- Simulated Captured Webpage Frame (with macOS window bar) -->
+    <g transform="translate(48, 40)">
+      <!-- Window Shadow -->
+      <rect width="974" height="610" rx="10" fill="#1E293B" filter="url(#shadowLg)"/>
+
+      <!-- macOS Window Header -->
+      <path d="M0 10C0 4.477 4.477 0 10 0h954c5.523 0 10 4.477 10 10v26H0V10z" fill="#0F172A"/>
+      <circle cx="20" cy="18" r="5" fill="#EF4444"/>
+      <circle cx="36" cy="18" r="5" fill="#F59E0B"/>
+      <circle cx="52" cy="18" r="5" fill="#10B981"/>
+      <text x="487" y="22" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11" text-anchor="middle">https://github.com/developer/project</text>
+
+      <!-- Webpage Document Content Slice -->
+      <rect x="0" y="36" width="974" height="574" fill="#FFFFFF"/>
+      
+      <!-- Mockup Document Lines -->
+      <rect x="40" y="60" width="220" height="24" rx="4" fill="#1E293B"/>
+      <rect x="40" y="100" width="400" height="12" rx="3" fill="#E2E8F0"/>
+      <rect x="40" y="120" width="360" height="12" rx="3" fill="#E2E8F0"/>
+      <rect x="40" y="140" width="320" height="12" rx="3" fill="#E2E8F0"/>
+
+      <!-- Annotations Drawn on Canvas -->
+      <!-- Red Arrow -->
+      <path d="M280 180L420 120" stroke="#EF4444" stroke-width="4" stroke-linecap="round"/>
+      <polygon points="420,120 405,123 413,134" fill="#EF4444"/>
+
+      <!-- Numbered Step Badge 1 -->
+      <circle cx="270" cy="185" r="14" fill="#EF4444" filter="url(#shadowLg)"/>
+      <text x="270" y="190" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="13" font-weight="700" text-anchor="middle">1</text>
+
+      <!-- Redaction Blur / Pixelate Box -->
+      <rect x="40" y="200" width="300" height="40" rx="4" fill="#94A3B8" opacity="0.3"/>
+      <rect x="40" y="200" width="300" height="40" rx="4" fill="none" stroke="#06B6D4" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="190" y="225" fill="#0891B2" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto" font-size="11" font-weight="700" text-anchor="middle">REDACTED / PRIVACY BLUR</text>
+    </g>
+  </g>
+</svg>
