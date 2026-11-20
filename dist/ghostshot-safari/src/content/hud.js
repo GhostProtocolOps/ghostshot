@@ -121,12 +121,16 @@ async function executeFullPageCapture(options) {
   // Page Warmup (sweep page to trigger lazy loaded images and responsive DOM)
   await scrollEngine.warmupPage(container);
 
+  const shouldSuppressNavbars = !options || options.hideSticky !== false;
+
   // Discover fixed and sticky elements across DOM & open Shadow DOM
   const { fixedElements, stickyElements } = crawler.findFixedAndStickyElements();
 
   // Normalize sticky elements immediately to static flow so they render in-place
   // without adhering to viewport during subsequent scroll slices
-  crawler.normalizeStickyElements(stickyElements);
+  if (shouldSuppressNavbars) {
+    crawler.normalizeStickyElements(stickyElements);
+  }
 
   // Re-read dimensions after warmup
   const windowHeight = container.clientHeight;
@@ -159,7 +163,7 @@ async function executeFullPageCapture(options) {
     // After slice 0, dynamically re-discover and hide all fixed elements
     // (zero-height containers, sidebars, subnavs, and scroll-injected headers)
     // to guarantee 100% visual parity with GoFullPage and 0 repeating bars.
-    if (sliceIndex > 0) {
+    if (sliceIndex > 0 && shouldSuppressNavbars) {
       const { fixedElements: currentFixed } = crawler.findFixedAndStickyElements();
       crawler.hideFixedElements(currentFixed);
       // Brief tick for DOM & style recalibration

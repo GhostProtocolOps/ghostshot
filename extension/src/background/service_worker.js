@@ -11,7 +11,7 @@ chrome.commands.onCommand.addListener(async (command) => {
   if (!tab || !tab.id) return;
 
   if (command === "_execute_action" || command === "capture_full") {
-    startCapture(tab.id, { mode: "full", delay: 0 });
+    startCapture(tab.id, { mode: "full", delay: 0, hideSticky: true });
   } else if (command === "capture_viewport") {
     startCapture(tab.id, { mode: "viewport", delay: 0 });
   } else if (command === "capture_selected") {
